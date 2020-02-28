@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <style>
+        nav {
+            height: 50px;
+            width: 100%;
+            background-color: orange;
+            color: white;
+        }
+    </style>
+    <nav>
+        <h1>Ashik Event Management</h1>
+        @Html.ActionLink("Sign In", "SignIn")
+        @Html.ActionLink("Sign Up", "SignUp")
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+    <footer style="text-align:center;background-color:yellowgreen"></footer>
+
+</body>
+</html>
+

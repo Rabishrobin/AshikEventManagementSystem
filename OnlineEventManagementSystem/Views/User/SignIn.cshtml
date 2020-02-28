@@ -1,0 +1,35 @@
+﻿@model OnlineEventManagementSystem.Models.SignInViewModel
+
+@{
+    ViewBag.Title = "SignIn";
+}
+
+<h2 style="text-align:center">SignIn</h2>
+
+@using (Html.BeginForm("SignIn", "User", FormMethod.Post))
+{
+    @Html.ValidationSummary(true);
+    <table cellpadding="10" align="center">
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.UserMailId)
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.UserMailId, new { @maxlength = "64" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.Password, new { @maxlength = "15" })
+            </td>
+            <td>
+                @Html.TextBoxFor(Model => Model.Password, new { @maxlength = "15" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" name="LogIn" />
+            </td>
+        </tr>
+    </table>
+}

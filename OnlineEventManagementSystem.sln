@@ -5,6 +5,14 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineEventManagementSystem", "OnlineEventManagementSystem\OnlineEventManagementSystem.csproj", "{C86E8D51-9AB1-4AE0-8658-1A567D690CEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineEventManagementSystem.Entity", "OnlineEventManagementSystem.Entity\OnlineEventManagementSystem.Entity.csproj", "{0B62A2BE-F805-4575-BDC0-F83C23CCE5FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineEventManagementSystem.DAL", "OnlineEventManagement.DAL\OnlineEventManagementSystem.DAL.csproj", "{C9E77C49-51E1-48B9-BEB0-EE8F8797D3CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineEventManagementSystem.BL", "OnlineEventManagementSystem.BL\OnlineEventManagementSystem.BL.csproj", "{AC67C7A0-6C58-44C6-AE2D-CEC06D1B6AA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineEventManagementSystem.Common", "OnlineEventManagementSystem.Common\OnlineEventManagementSystem.Common.csproj", "{96E0454C-17B9-48BE-AE83-3B5A1E8A6446}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{C86E8D51-9AB1-4AE0-8658-1A567D690CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C86E8D51-9AB1-4AE0-8658-1A567D690CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C86E8D51-9AB1-4AE0-8658-1A567D690CEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B62A2BE-F805-4575-BDC0-F83C23CCE5FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B62A2BE-F805-4575-BDC0-F83C23CCE5FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B62A2BE-F805-4575-BDC0-F83C23CCE5FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B62A2BE-F805-4575-BDC0-F83C23CCE5FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9E77C49-51E1-48B9-BEB0-EE8F8797D3CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9E77C49-51E1-48B9-BEB0-EE8F8797D3CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9E77C49-51E1-48B9-BEB0-EE8F8797D3CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9E77C49-51E1-48B9-BEB0-EE8F8797D3CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC67C7A0-6C58-44C6-AE2D-CEC06D1B6AA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC67C7A0-6C58-44C6-AE2D-CEC06D1B6AA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC67C7A0-6C58-44C6-AE2D-CEC06D1B6AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC67C7A0-6C58-44C6-AE2D-CEC06D1B6AA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96E0454C-17B9-48BE-AE83-3B5A1E8A6446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96E0454C-17B9-48BE-AE83-3B5A1E8A6446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96E0454C-17B9-48BE-AE83-3B5A1E8A6446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96E0454C-17B9-48BE-AE83-3B5A1E8A6446}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
