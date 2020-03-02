@@ -61,9 +61,17 @@
     <Compile Include="Migrations\202002280835211_ColumnUpdate.designer.cs">
       <DependentUpon>202002280835211_ColumnUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003020414418_Update.cs" />
+    <Compile Include="Migrations\202003020414418_Update.designer.cs">
+      <DependentUpon>202003020414418_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003020830408_insert.cs" />
+    <Compile Include="Migrations\202003020830408_insert.designer.cs">
+      <DependentUpon>202003020830408_insert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineEventManagementDBContext.cs" />
-    <Compile Include="UserRepository.cs" />
+    <Compile Include="AccountRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +94,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002280835211_ColumnUpdate.resx">
       <DependentUpon>202002280835211_ColumnUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003020414418_Update.resx">
+      <DependentUpon>202003020414418_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003020830408_insert.resx">
+      <DependentUpon>202003020830408_insert.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

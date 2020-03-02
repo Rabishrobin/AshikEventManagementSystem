@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace OnlineEventManagementSystem.Models
 {
@@ -17,7 +14,7 @@ namespace OnlineEventManagementSystem.Models
         public string UserMailId { get; set; }
         //validation for password
         [Required(ErrorMessage = "Please enter your password")]
-        [RegularExpression("((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})", ErrorMessage = "Password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters.")]
+        [RegularExpression("((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()]).{6,15})", ErrorMessage = "Password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters.")]
         [MaxLength(15)]
         [MinLength(6)]
         [DataType(DataType.Password)]
@@ -31,13 +28,12 @@ namespace OnlineEventManagementSystem.Models
         //Validation for first name
         [Required(ErrorMessage = "Please enter your first name")]
         [MaxLength(35)]
-        [RegularExpression("[A-Z][a-z][^(@#&<>~;$^%{}?][^0-9]{0,35}", ErrorMessage = "Please enter a valid name")]
+        [RegularExpression("[A-Z][a-z][^(@#&<>~;$^%{}?][^0-9]{0,35}", ErrorMessage = "Please enter a valid first name")]
         [Display(Name = "First Name")]
         public string UserFirstName { get; set; }
         //Validation for last name
         [Required(ErrorMessage = "Please enter your last name")]
         [MaxLength(35)]
-        [RegularExpression("[A-Z][a-z][^(@#&<>~;$^%{}?][^0-9]{0,35}", ErrorMessage = "Please enter a valid name")]
         [Display(Name = "Last Name")]
         public string UserLastName { get; set; }
         //Validation for mobile number

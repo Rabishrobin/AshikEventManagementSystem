@@ -1,10 +1,6 @@
 ﻿using OnlineEventManagementSystem.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
+
 namespace OnlineEventManagement.DAL
 {
     public class OnlineEventManagementDBContext:DbContext
@@ -13,6 +9,6 @@ namespace OnlineEventManagement.DAL
         {
 
         }
-        public DbSet<UserManager> UserDB { get; set; }
+        public DbSet<Account> UserDB { get; set; }
     }
 }

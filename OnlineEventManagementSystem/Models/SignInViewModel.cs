@@ -14,6 +14,7 @@ namespace OnlineEventManagementSystem.Models
 
         [Required(ErrorMessage = "Please enter your password")]
         [Display(Name = "Password")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         public SignInViewModel()
