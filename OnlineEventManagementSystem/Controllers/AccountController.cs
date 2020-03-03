@@ -19,16 +19,20 @@ namespace OnlineEventManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                Account user = new Account();
-                user.UserID = user.GenerateUserID(users.UserFirstName, users.UserMobileNumber);
-                user.UserFirstName = users.UserFirstName;
-                user.UserLastName = users.UserLastName;
-                user.UserMailId = users.UserMailId;
-                user.UserMobileNumber = users.UserMobileNumber;
-                user.UserGender = users.UserGender;
-                user.UserDOB = users.UserDOB.Date;
-                user.UserPassword = users.UserPassword;
+                //users.UserID= Account.GenerateUserID(users.UserFirstName, users.UserMobileNumber);
+                var user = AutoMapper.Mapper.Map<SignUpViewModel, Account>(users);
                 AccountBL.AddUser(user);
+                TempData["Message"] = "Registered successfully";
+                //Account user = new Account();
+                //user.UserID = user.GenerateUserID(users.UserFirstName, users.UserMobileNumber);
+                //user.UserFirstName = users.UserFirstName;
+                //user.UserLastName = users.UserLastName;
+                //user.UserMailId = users.UserMailId;
+                //user.UserMobileNumber = users.UserMobileNumber;
+                //user.UserGender = users.UserGender;
+                //user.UserDOB = users.UserDOB.Date;
+                //user.UserPassword = users.UserPassword;
+                //AccountBL.AddUser(user);
                 return RedirectToAction("SignIn");
             }
 
@@ -44,18 +48,17 @@ namespace OnlineEventManagementSystem.Controllers
         [HttpPost]
         public ActionResult SignIn(SignInViewModel user)
         {
-            string mail_Id = user.UserMailId;
-            string password = user.Password;
-            if (AccountBL.ValidateLogIn(mail_Id, password)==null)
+            var account = AccountBL.ValidateLogIn(user.UserMailId, user.Password);
+            if (account!=null)
             {
-                return RedirectToAction("Dashboard");
+                return RedirectToAction("Dashboard",account);
             }
             return View();
         }
 
-        public ActionResult Dashboard()
+        public ActionResult Dashboard(Account user)
         {
-            return View();
+            return View(user);
         }
     }
 }

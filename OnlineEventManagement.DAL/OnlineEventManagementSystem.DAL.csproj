@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\EventRepository.cs" />
     <Compile Include="Migrations\202002280822099_InitialCreate.cs" />
     <Compile Include="Migrations\202002280822099_InitialCreate.designer.cs">
       <DependentUpon>202002280822099_InitialCreate.cs</DependentUpon>
@@ -69,9 +70,25 @@
     <Compile Include="Migrations\202003020830408_insert.designer.cs">
       <DependentUpon>202003020830408_insert.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003030433561_lengthUpdate.cs" />
+    <Compile Include="Migrations\202003030433561_lengthUpdate.designer.cs">
+      <DependentUpon>202003030433561_lengthUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003030439090_uniquekey.cs" />
+    <Compile Include="Migrations\202003030439090_uniquekey.designer.cs">
+      <DependentUpon>202003030439090_uniquekey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003030633260_unique.cs" />
+    <Compile Include="Migrations\202003030633260_unique.designer.cs">
+      <DependentUpon>202003030633260_unique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003030919583_roleaddition.cs" />
+    <Compile Include="Migrations\202003030919583_roleaddition.designer.cs">
+      <DependentUpon>202003030919583_roleaddition.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineEventManagementDBContext.cs" />
-    <Compile Include="AccountRepository.cs" />
+    <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +117,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003020830408_insert.resx">
       <DependentUpon>202003020830408_insert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003030433561_lengthUpdate.resx">
+      <DependentUpon>202003030433561_lengthUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003030439090_uniquekey.resx">
+      <DependentUpon>202003030439090_uniquekey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003030633260_unique.resx">
+      <DependentUpon>202003030633260_unique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003030919583_roleaddition.resx">
+      <DependentUpon>202003030919583_roleaddition.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,5 +10,6 @@ namespace OnlineEventManagement.DAL
 
         }
         public DbSet<Account> UserDB { get; set; }
+        public DbSet<Event> EventDB { get; set; }
     }
 }

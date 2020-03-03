@@ -40,6 +40,7 @@ namespace OnlineEventManagementSystem.Models
         [Required(ErrorMessage = "Please enter your mobile number")]
         [RegularExpression("^[6-9][0-9]{9}$", ErrorMessage = "Please enter a valid mobile number")]
         [DataType(DataType.PhoneNumber, ErrorMessage = "Please enter a valid mobile number")]
+      
         [Display(Name = "Mobile Number")]
         public long UserMobileNumber { get; set; }
         //Validation for date of birth

@@ -1,8 +1,8 @@
-﻿using OnlineEventManagementSystem.Entity;
-using System.Collections.Generic;
+﻿using OnlineEventManagement.DAL;
+using OnlineEventManagementSystem.Entity;
 using System.Linq;
 
-namespace OnlineEventManagement.DAL
+namespace OnlineEventManagement.Repository.DAL
 {
     public class AccountRepository
     {
@@ -16,15 +16,6 @@ namespace OnlineEventManagement.DAL
         {
             Account user = context.UserDB.Where(u=>u.UserMailId==userMailId && u.UserPassword==password).FirstOrDefault();
             return user;
-            //foreach(var value in users)
-            //{
-            //    if (value.UserMailId == userMailId && value.UserPassword == password)
-            //    {
-            //        isValue = true;
-            //        break;
-            //    }
-            //}
-            //return isValue;
         }
     }
 }

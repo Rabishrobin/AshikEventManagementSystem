@@ -13,6 +13,7 @@ namespace OnlineEventManagementSystem
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            MappingConfig.MapAccountDetails();
         }
     }
 }
