@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "DispalyEvents";
+}
+<table border="1" align="center">
+    <tr>
+        <th>Event ID</th>
+        <th>Event Name</th>
+        <th>Event Type</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (OnlineEventManagementSystem.Entity.Event item in ViewBag.Events)
+    {
+        <tr>
+            <td>@item.EventID</td>
+            <td>@item.EventName</td>
+            <td>@item.EventType</td>
+            <td>
+                @Html.ActionLink("Update", "UpdateEvent", new { id = item.EventID })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteEvent", new { id = item.EventID })
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Add Event", "AddEvent", new { @style = "align:center" })

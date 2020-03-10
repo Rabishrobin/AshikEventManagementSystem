@@ -9,12 +9,12 @@ namespace OnlineEventManagement.Repository.DAL
         static OnlineEventManagementDBContext context = new OnlineEventManagementDBContext();
         public static void AddUser(Account user)
         {
-            context.UserDB.Add(user);
+            context.Users.Add(user);
             context.SaveChanges();
         }
         public static Account VerifyMailId(string userMailId,string password)
         {
-            Account user = context.UserDB.Where(u=>u.UserMailId==userMailId && u.UserPassword==password).FirstOrDefault();
+            Account user = context.Users.Where(u=>u.UserMailId==userMailId && u.UserPassword==password).FirstOrDefault();
             return user;
         }
     }

@@ -1,0 +1,36 @@
+﻿@model OnlineEventManagementSystem.Models.AddServiceModel
+
+@{
+    ViewBag.Title = "AddService";
+}
+
+@using (Html.BeginForm("AddService", "Service", FormMethod.Post))
+{
+    @Html.ValidationSummary(true);
+    <table>
+        <tr>
+            <td>@Html.LabelFor(Model => Model.ServiceName)</td>
+            <td>
+                @Html.TextBoxFor(Model => Model.ServiceName, new { @maxlength = "20" })
+                @Html.ValidationMessageFor(model => model.ServiceName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.ServiceCategory)
+            </td>
+            <td>
+                @Html.RadioButtonFor(Model => Model.ServiceCategory, "Personal")Personal
+                @Html.RadioButtonFor(Model => Model.ServiceCategory, "Corporate")Corporate
+                @Html.ValidationMessageFor(model => model.ServiceCategory)
+            </td>
+        </tr>
+        <tr colspan="2">
+            <td>
+                <input type="submit" value="Add" />
+            </td>
+        </tr>
+    </table>
+}
+
+

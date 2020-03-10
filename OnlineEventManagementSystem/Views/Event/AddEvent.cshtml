@@ -1,0 +1,39 @@
+﻿@model OnlineEventManagementSystem.Models.EventModel
+
+@{
+    ViewBag.Title = "AddEvent";
+}
+
+@if(TempData["Message"]!=null)
+{
+    @Html.Label((string)TempData["Message"])
+}
+@using (Html.BeginForm("AddEvent", "Event", FormMethod.Post))
+{
+    @Html.ValidationSummary(true);
+    <table>
+        <tr>
+            <td>@Html.LabelFor(Model=>Model.EventName)</td>
+            <td>
+                @Html.TextBoxFor(Model=>Model.EventName , new { @maxlength = "20" })
+                @Html.ValidationMessageFor(model=>model.EventName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.EventType)
+            </td>
+            <td>
+                @Html.RadioButtonFor(Model => Model.EventType,"Personal")Personal
+                @Html.RadioButtonFor(Model => Model.EventType, "Corporate")Corporate
+                @Html.ValidationMessageFor(model=>model.EventType)
+            </td>
+        </tr>
+        <tr colspan="2">
+            <td>
+                <input type="submit" value="Add" />
+            </td>
+        </tr>
+    </table>
+}
+

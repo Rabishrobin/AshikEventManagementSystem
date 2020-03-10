@@ -53,6 +53,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\202003041027194_eventTable.cs" />
+    <Compile Include="Migrations\202003041027194_eventTable.designer.cs">
+      <DependentUpon>202003041027194_eventTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003100910174_updatevent.cs" />
+    <Compile Include="Migrations\202003100910174_updatevent.designer.cs">
+      <DependentUpon>202003100910174_updatevent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\EventRepository.cs" />
     <Compile Include="Migrations\202002280822099_InitialCreate.cs" />
     <Compile Include="Migrations\202002280822099_InitialCreate.designer.cs">
@@ -90,6 +98,7 @@
     <Compile Include="OnlineEventManagementDBContext.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ServiceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OnlineEventManagementSystem.Common\OnlineEventManagementSystem.Common.csproj">
@@ -129,6 +138,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003030919583_roleaddition.resx">
       <DependentUpon>202003030919583_roleaddition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003041027194_eventTable.resx">
+      <DependentUpon>202003041027194_eventTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003100910174_updatevent.resx">
+      <DependentUpon>202003100910174_updatevent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

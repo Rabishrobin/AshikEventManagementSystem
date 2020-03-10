@@ -19,20 +19,8 @@ namespace OnlineEventManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                //users.UserID= Account.GenerateUserID(users.UserFirstName, users.UserMobileNumber);
-                var user = AutoMapper.Mapper.Map<SignUpViewModel, Account>(users);
+                var user = AutoMapper.Mapper.Map<SignUpViewModel, Account>(users);      //Automapping user details from model to entity 
                 AccountBL.AddUser(user);
-                TempData["Message"] = "Registered successfully";
-                //Account user = new Account();
-                //user.UserID = user.GenerateUserID(users.UserFirstName, users.UserMobileNumber);
-                //user.UserFirstName = users.UserFirstName;
-                //user.UserLastName = users.UserLastName;
-                //user.UserMailId = users.UserMailId;
-                //user.UserMobileNumber = users.UserMobileNumber;
-                //user.UserGender = users.UserGender;
-                //user.UserDOB = users.UserDOB.Date;
-                //user.UserPassword = users.UserPassword;
-                //AccountBL.AddUser(user);
                 return RedirectToAction("SignIn");
             }
 

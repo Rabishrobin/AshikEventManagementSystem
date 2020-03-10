@@ -43,6 +43,7 @@
     <Compile Include="AccountBL.cs" />
     <Compile Include="EventBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OnlineEventManagement.DAL\OnlineEventManagementSystem.DAL.csproj">
