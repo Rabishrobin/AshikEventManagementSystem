@@ -21,9 +21,9 @@ namespace OnlineEventManagementSystem.Entity
         [MaxLength(20)]
         public string ServiceCategory { get; set; }
 
-        public static string GenerateServiceID(string serviceName)
+        public static string GenerateServiceID(string serviceName, string serviceCategory)
         {
-            string eventId = "S" + DateTime.Now.ToString("dd/mm/yyyy").Substring(3, 2) + serviceName.Substring(0, 4).ToUpper() + DateTime.Now.Year.ToString().Substring(2, 2);
+            string eventId = "E" + serviceCategory[0] + serviceName.Length + serviceName.Substring(0, 4).ToUpper();
             return eventId;
         }
     }

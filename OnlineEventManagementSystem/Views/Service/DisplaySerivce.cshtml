@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "DisplaySerivce";
+}
+
+<table border="1" align="center">
+    <tr>
+        <th>Service ID</th>
+        <th>Service Name</th>
+        <th>Service Type</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (OnlineEventManagementSystem.Entity.Service item in ViewBag.Services)
+    {
+        <tr>
+            <td>@item.ServiceID</td>
+            <td>@item.ServiceName</td>
+            <td>@item.ServiceCategory</td>
+            <td>
+                @Html.ActionLink("Update", "UpdateService", new { id = item.ServiceID })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteService", new { id = item.ServiceID })
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Add Service", "AddService", new { @style = "align:center" })

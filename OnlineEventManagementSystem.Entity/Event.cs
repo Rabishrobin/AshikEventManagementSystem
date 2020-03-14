@@ -8,7 +8,7 @@ namespace OnlineEventManagementSystem.Entity
         [Key]
         [Required]
         [Column("Event Id")]
-        public string EventID { get; set; }
+        public string EventId { get; set; }
 
         [Required]
         [Column("Event Name")]

@@ -61,6 +61,10 @@
     <Compile Include="Migrations\202003100910174_updatevent.designer.cs">
       <DependentUpon>202003100910174_updatevent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003110347171_sp.cs" />
+    <Compile Include="Migrations\202003110347171_sp.designer.cs">
+      <DependentUpon>202003110347171_sp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\EventRepository.cs" />
     <Compile Include="Migrations\202002280822099_InitialCreate.cs" />
     <Compile Include="Migrations\202002280822099_InitialCreate.designer.cs">
@@ -144,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003100910174_updatevent.resx">
       <DependentUpon>202003100910174_updatevent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003110347171_sp.resx">
+      <DependentUpon>202003110347171_sp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

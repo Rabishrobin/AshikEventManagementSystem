@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "DispalyEvents";
+    ViewBag.Title = "DisplayEvents";
 }
 <table border="1" align="center">
     <tr>
@@ -13,14 +13,15 @@
     @foreach (OnlineEventManagementSystem.Entity.Event item in ViewBag.Events)
     {
         <tr>
-            <td>@item.EventID</td>
+            <td>@item.EventId</td>
             <td>@item.EventName</td>
             <td>@item.EventType</td>
+            
             <td>
-                @Html.ActionLink("Update", "UpdateEvent", new { id = item.EventID })
+                @Html.ActionLink("Update", "UpdateEvent", new { id = item.EventId})
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteEvent", new { id = item.EventID })
+                @Html.ActionLink("Delete", "DeleteEvent", new { id = item.EventId })
             </td>
         </tr>
     }

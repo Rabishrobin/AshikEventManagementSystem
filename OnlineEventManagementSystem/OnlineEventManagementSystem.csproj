@@ -196,7 +196,11 @@
     <Content Include="Views\Event\AddEvent.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Service\AddService.cshtml" />
-    <Content Include="Views\Event\DispalyEvents.cshtml" />
+    <Content Include="Views\Event\DisplayEvents.cshtml" />
+    <Content Include="Views\Event\DeleteEvent.cshtml" />
+    <Content Include="Views\Event\UpdateEvent.cshtml" />
+    <Content Include="Views\Service\DisplaySerivce.cshtml" />
+    <Content Include="Views\Service\DeleteService.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

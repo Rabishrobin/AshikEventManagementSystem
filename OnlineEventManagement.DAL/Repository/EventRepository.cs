@@ -7,15 +7,6 @@ namespace OnlineEventManagement.Repository.DAL
 {
     public class EventRepository
     {
-        public static void AddEvent(Event newEvent)
-        {
-            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
-            {
-                context.Events.Add(newEvent);
-                context.SaveChanges();
-
-            }
-        }
         public static IEnumerable<Event> DisplayEvents()
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
@@ -28,15 +19,24 @@ namespace OnlineEventManagement.Repository.DAL
             bool IsExist = false;
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                IsExist = (context.Events.Where(e => e.EventID == eventId).FirstOrDefault() == null);
+                IsExist = (context.Events.Where(e => e.EventId == eventId).FirstOrDefault() == null);
             }
             return IsExist;
+        }
+        public static void AddEvent(Event newEvent)
+        {
+            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
+            {
+                context.Events.Add(newEvent);
+                context.SaveChanges();
+
+            }
         }
         public static Event GetEventById(string eventId)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                return context.Events.Where(e => e.EventID == eventId).FirstOrDefault();
+                return context.Events.Where(e => e.EventId == eventId).FirstOrDefault();
             }
         }
         public static void DeleteEvent(string eventId)
@@ -46,6 +46,14 @@ namespace OnlineEventManagement.Repository.DAL
                 Event existingEvent = GetEventById(eventId);
                 context.Events.Attach(existingEvent);
                 context.Events.Remove(existingEvent);
+                context.SaveChanges();
+            }
+        }
+        public static void UpdateEvent(Event updatedEvent)
+        {
+            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
+            {
+                context.Entry(updatedEvent).State = System.Data.Entity.EntityState.Modified;
                 context.SaveChanges();
             }
         }

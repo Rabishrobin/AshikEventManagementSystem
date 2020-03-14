@@ -15,5 +15,17 @@ namespace OnlineEventManagementSystem.BL
         {
             ServiceRepository.AddService(newService);
         }
+        public static IEnumerable<Service> DisplayServices()
+        {
+            return ServiceRepository.DisplayServices();
+        }
+        public static bool VerifyService(string serviceId)
+        {
+            return ServiceRepository.VerifyService(serviceId);
+        }
+        public static void DeleteService(string serviceId)
+        {
+            ServiceRepository.DeleteService(serviceId);
+        }
     }
 }
