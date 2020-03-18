@@ -22,7 +22,7 @@ namespace OnlineEventManagementSystem.Entity
 
         public static string GenerateEventID(string eventName, string eventType)
         {
-            string eventId = "E" + eventType[0] + eventName.Length + eventName.Substring(0, 4).ToUpper();
+            string eventId = "E" + eventType[0] + eventName.Length + eventName.Substring(0, 4).ToUpper();     //Generating event id
             return eventId;
         }
     }

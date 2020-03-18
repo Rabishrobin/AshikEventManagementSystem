@@ -39,33 +39,33 @@ namespace OnlineEventManagementSystem.Controllers
         [HttpGet]
         public ActionResult UpdateEvent(string id)
         {
-            Event existingEvent = EventBL.GetEventById(id);
-            EventModel eventModel = AutoMapper.Mapper.Map<Event, EventModel>(existingEvent);
+            Event existingEvent = EventBL.GetEventById(id);                             //Getting the event details from database
+            EventModel eventModel = AutoMapper.Mapper.Map<Event, EventModel>(existingEvent);    //Mapping the details to the model to show the existing details
             return View(eventModel);
         }
         [HttpPost]
         public ActionResult UpdateEvent([Bind(Include = "EventId, EventName, EventType")] EventModel existingEvent)
         {
-            Event updatedEvent = EventBL.GetEventById(existingEvent.EventId);
-            updatedEvent.EventName = existingEvent.EventName;
-            updatedEvent.EventType = existingEvent.EventType;
-            EventBL.UpdateEvent(updatedEvent);
+            Event updatedEvent = EventBL.GetEventById(existingEvent.EventId);           //Getting the objecct of the event by using the event id from the database
+            updatedEvent.EventName = existingEvent.EventName;                           //Updating the event name if any changes made
+            updatedEvent.EventType = existingEvent.EventType;                           //Updating the event type if any changes made
+            EventBL.UpdateEvent(updatedEvent);                                          //Updating the database
             TempData["Message"] = "Event updated";
             return View();
         }
         [HttpGet]
-        public ViewResult DeleteEvent(string id)
+        public ActionResult DeleteEvent(string id)
         {
-            EventBL.DeleteEvent(id);
-            TempData["Message"] = "Event deleted";                                  //Displaying completed message after deleting the event
-            return View();
+            EventBL.DeleteEvent(id);                                                  //Deleting the details from the database
+            //TempData["Message"] = "Event deleted";                                  //Displaying completed message after deleting the event
+            return RedirectToAction("DisplayEvents");
         }
-    //    [HttpPost]
-    //    public ViewResult DeleteEvent()
-    //    {
-    //        EventBL.DeleteEvent(id);
-    //        TempData["Message"] = "Event deleted";                                  //Displaying completed message after deleting the event
-    //        return View();
-    //    }
+        //[HttpPost]
+        //public ViewResult DeleteEvent(string id)
+        //{
+        //    EventBL.DeleteEvent(id);
+        //    TempData["Message"] = "Event deleted";                                  //Displaying completed message after deleting the event
+        //    return View();
+        //}
     }
 }

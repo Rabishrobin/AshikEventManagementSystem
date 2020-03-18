@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Event";
+}
+<h3>Personal events</h3>
+<ul>
+    @foreach (OnlineEventManagementSystem.Entity.Event item in ViewBag.Events)
+    {
+        if (@item.EventType.Equals("Personal"))
+        {
+            <li>@item.EventName</li>
+        }
+    }
+</ul>
+<h3>Corporate events</h3>
+<ul>
+    @foreach (OnlineEventManagementSystem.Entity.Event item in ViewBag.Events)
+    {
+        if (@item.EventType.Equals("Corporate"))
+        {
+            <li>@item.EventName</li>
+        }
+    }
+</ul>

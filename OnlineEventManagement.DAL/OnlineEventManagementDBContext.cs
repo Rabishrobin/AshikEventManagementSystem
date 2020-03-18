@@ -9,12 +9,12 @@ namespace OnlineEventManagement.DAL
         {
 
         }
-        public DbSet<Account> Users { get; set; }
-        public DbSet<Event> Events { get; set; }
-        public DbSet<Service> Services { get; set; }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Service>().MapToStoredProcedures();
-        }
+        public DbSet<Account> Users { get; set; }           //Dbset of the user details table
+        public DbSet<Event> Events { get; set; }            //Dbset of the event details table
+        public DbSet<Service> Services { get; set; }        //Dbset of the service details table
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Service>().MapToStoredProcedures();
+        //}
     }
 }

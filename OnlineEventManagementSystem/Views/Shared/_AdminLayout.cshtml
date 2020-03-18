@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <style>
+        .top-bar {
+            background-color: orangered;
+            color: black;
+            padding: 5px;
+        }
+
+        .body {
+            display: flex;
+        }
+
+        .body-nav {
+            width: 20%;
+        }
+
+        .body-con {
+            width: 80%;
+        }
+
+        .nav-icon {
+            float: left;
+            list-style: none;
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        @Html.ActionLink("Ashik Event Management", "Index", "Admin")
+    </div>
+    <div class="body">
+        <div class="body-nav">
+            <ul class="nav-icon">
+                <li>@Html.ActionLink("View Events", "DisplayEvents", "Event")</li>
+                <li>@Html.ActionLink("View Services", "DisplayServices", "Service")</li>
+                <li>@Html.ActionLink("Add Event", "AddEvent", "Event")</li>
+                <li>@Html.ActionLink("Add Service", "AddService", "Service")</li>
+            </ul>
+        </div>
+        <div class="body-con">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>

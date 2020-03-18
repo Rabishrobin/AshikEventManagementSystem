@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "AddService";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @if (TempData["Message"] != null)
 {
@@ -25,6 +26,18 @@
             <td>
 
                 @Html.ValidationMessageFor(model => model.ServiceCategory)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.EventType)
+            </td>
+            <td>
+                @Html.RadioButtonFor(Model => Model.EventType,"Personal")Personal
+                @Html.RadioButtonFor(Model => Model.EventType, "Corporate")Corporate
+                @Html.RadioButtonFor(Model => Model.EventType, "Both")Both
+
+                @Html.ValidationMessageFor(model => model.EventType)
             </td>
         </tr>
         <tr colspan="2">

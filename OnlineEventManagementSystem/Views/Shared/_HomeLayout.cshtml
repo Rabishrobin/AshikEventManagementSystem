@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/design.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="whole-continer">
+        <div class="top-nav">
+            <div class="container">
+                <div class="title-bar">
+                    @Html.ActionLink("Ashik Event Management", "Index", "Home", new { area = "" }, new { @class="title-nav"})
+                </div>
+                <div class="">
+                    <ul class="nav-button">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Register", "SignUp", "Account")</li>
+                        <li>@Html.ActionLink("Login", "SignIn", "Account")</li>
+                        <li>@Html.ActionLink("Events","Event","Home")</li>
+                        <li>@Html.ActionLink("Services","Service", "Home")</li>
+                        <li>@Html.ActionLink("Gallery","Gallery", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="body-content">
+            @RenderBody()
+        </div>
+    </div>
+    <footer></footer>
+
+</body>
+</html>

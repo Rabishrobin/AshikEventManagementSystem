@@ -8,18 +8,16 @@ namespace OnlineEventManagementSystem.Models
 {
     public class SignInViewModel
     {
+        //Validation for mail id
         [Required(ErrorMessage = "Please enter your email address")]
-        [Display(Name = "Username")]
+        [Display(Name = "User Mail Id")]
         public string UserMailId { get; set; }
 
+        //Validation for password
         [Required(ErrorMessage = "Please enter your password")]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public SignInViewModel()
-        {
-
-        }
     }
 }

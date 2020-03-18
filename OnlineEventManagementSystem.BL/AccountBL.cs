@@ -7,11 +7,11 @@ namespace OnlineEventManagementSystem.BL
     {
         public static void AddUser(Account user)
         {
-            AccountRepository.AddUser(user);
+            AccountRepository.AddUser(user);        //Adding user details
         }
         public static Account ValidateLogIn(string username,string password)
         {
-           return AccountRepository.VerifyMailId(username, password);
+           return AccountRepository.VerifyMailId(username, password);           //Verifying the user mail id and password
         }
     }
 }

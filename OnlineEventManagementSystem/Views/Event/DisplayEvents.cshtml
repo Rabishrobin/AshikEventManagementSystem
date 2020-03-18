@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "DisplayEvents";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <table border="1" align="center">
     <tr>
@@ -21,9 +22,8 @@
                 @Html.ActionLink("Update", "UpdateEvent", new { id = item.EventId})
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteEvent", new { id = item.EventId })
+                @Html.ActionLink("Delete", "DeleteEvent", new { id = item.EventId }, new { onclick="retrun confirm('Are you sure to delete?');"})
             </td>
         </tr>
     }
 </table>
-@Html.ActionLink("Add Event", "AddEvent", new { @style = "align:center" })

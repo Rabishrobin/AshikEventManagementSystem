@@ -1,10 +1,11 @@
-﻿@model Online   EventManagementSystem.Models.EventModel
+﻿@model OnlineEventManagementSystem.Models.EventModel
 
 @{
     ViewBag.Title = "AddEvent";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@if(TempData["Message"]!=null)
+@if (TempData["Message"]!=null)
 {
     @Html.Label((string)TempData["Message"])
 }

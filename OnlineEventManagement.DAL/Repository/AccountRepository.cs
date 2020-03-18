@@ -6,16 +6,21 @@ namespace OnlineEventManagement.Repository.DAL
 {
     public class AccountRepository
     {
-        static OnlineEventManagementDBContext context = new OnlineEventManagementDBContext();
         public static void AddUser(Account user)
         {
-            context.Users.Add(user);
-            context.SaveChanges();
+            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
+            {
+                context.Users.Add(user);        //Adding the user details to the conext
+                context.SaveChanges();          //Saving the changes to the database
+            }
         }
         public static Account VerifyMailId(string userMailId,string password)
         {
-            Account user = context.Users.Where(u=>u.UserMailId==userMailId && u.UserPassword==password).FirstOrDefault();
-            return user;
+            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
+            {
+                Account user = context.Users.Where(u => u.UserMailId == userMailId && u.UserPassword == password).FirstOrDefault();     //Verfying the user mailid and password
+                return user;
+            }
         }
     }
 }

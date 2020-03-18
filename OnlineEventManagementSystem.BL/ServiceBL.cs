@@ -1,11 +1,6 @@
 ﻿using OnlineEventManagement.DAL.Repository;
-using OnlineEventManagement.Repository.DAL;
 using OnlineEventManagementSystem.Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineEventManagementSystem.BL
 {
@@ -13,19 +8,27 @@ namespace OnlineEventManagementSystem.BL
     {
         public static void AddService(Service newService)
         {
-            ServiceRepository.AddService(newService);
+            ServiceRepository.AddService(newService);       //Adding new service
+        }
+        public static Service GetServiceById(string serviceId)
+        {
+            return ServiceRepository.GetServiceById(serviceId);    //Getting a particular service from the database
         }
         public static IEnumerable<Service> DisplayServices()
         {
-            return ServiceRepository.DisplayServices();
+            return ServiceRepository.DisplayServices();         //Getting the services from the database
         }
         public static bool VerifyService(string serviceId)
         {
-            return ServiceRepository.VerifyService(serviceId);
+            return ServiceRepository.VerifyService(serviceId);    //Verifying service existance
         }
         public static void DeleteService(string serviceId)
         {
-            ServiceRepository.DeleteService(serviceId);
+            ServiceRepository.DeleteService(serviceId);         //Deleting service from the database
+        }
+        public static void UpdateService(Service service)
+        {
+            ServiceRepository.UpdateService(service);      //Updating the service details in the database
         }
     }
 }

@@ -1,4 +1,77 @@
 ﻿body {
+    background-image: url("../../Images/bground.jpg");
+    background-attachment: fixed;
+    background-size: 100% 100%;
 }
 
+.whole-continer {
+    margin-left: 5%;
+    margin-right: 5%;
+}
 
+.top-nav {
+    margin-top: 3%;
+    position: relative;
+    background-color: white;
+    border-color: #333333;
+    margin-bottom: 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 1px solid;
+    border-radius: 10px;
+    height: 60px;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 50px;
+    margin-right: auto;
+    /*margin-left: auto;*/
+    display: table;
+}
+
+.title-nav {
+    text-decoration: none;
+    color: orange;
+    float: left;
+    padding: 15px 15px;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+    .title-nav a:hover {
+        color: black;
+    }
+
+
+.nav-button li {
+    float: left;
+    list-style: none;
+    text-align: center;
+    background-color: white;
+    margin-right: 30px;
+    width: 150px;
+    line-height: 20px;
+}
+
+    .nav-button li a {
+        text-decoration: none;
+        color: black;
+        display: block;
+    }
+
+        .nav-button li a:hover {
+            text-decoration: none;
+            color: orange;
+        }
+
+.body-content {
+    background-color:white;
+    width:50%;
+    margin-left:50%;
+    border-radius:3%;
+}
+h2{
+    color:orange;
+}

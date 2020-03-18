@@ -20,8 +20,8 @@ namespace OnlineEventManagementSystem.Controllers
             if (ModelState.IsValid)
             {
                 var user = AutoMapper.Mapper.Map<SignUpViewModel, Account>(users);      //Automapping user details from model to entity 
-                AccountBL.AddUser(user);
-                return RedirectToAction("SignIn");
+                AccountBL.AddUser(user);                                                //Adding the user details to the database
+                return RedirectToAction("SignIn");                                      //Redirecting to the login page
             }
 
             return View();
@@ -36,10 +36,10 @@ namespace OnlineEventManagementSystem.Controllers
         [HttpPost]
         public ActionResult SignIn(SignInViewModel user)
         {
-            var account = AccountBL.ValidateLogIn(user.UserMailId, user.Password);
+            var account = AccountBL.ValidateLogIn(user.UserMailId, user.Password);      //Verifying the user mail id and password
             if (account!=null)
             {
-                return RedirectToAction("Dashboard",account);
+                return RedirectToAction("Dashboard",account);                            //Redirecting to the user dashboard
             }
             return View();
         }

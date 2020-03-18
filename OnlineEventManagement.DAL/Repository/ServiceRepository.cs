@@ -9,37 +9,37 @@ namespace OnlineEventManagement.DAL.Repository
 {
     public class ServiceRepository
     {
-    //    public static void AddService(Service newService)
-    //    {
-    //        using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
-    //        {
-    //            context.Services.Add(newService);
-    //            context.SaveChanges();
-    //        } 
-    //    }
-
-        public static void AddService(Service service)
+        public static void AddService(Service newService)
         {
-            using (SqlConnection con = new SqlConnection("EventManagement"))
+            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                SqlCommand cmd = new SqlCommand("Service_Insert", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.AddWithValue("@Service_Id", service.ServiceID);
-                cmd.Parameters.AddWithValue("@Service_Name", service.ServiceName);
-                cmd.Parameters.AddWithValue("@Service_Type", service.ServiceCategory);
-
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
+                context.Services.Add(newService);               //Adding new service to the database
+                context.SaveChanges();                          //Updating the database
             }
         }
+
+        //public static void AddService(Service service)
+        //{
+        //    using (SqlConnection con = new SqlConnection("EventManagement"))
+        //    {
+        //        SqlCommand cmd = new SqlCommand("Service_Insert", con);
+        //        cmd.CommandType = CommandType.StoredProcedure;
+
+        //        cmd.Parameters.AddWithValue("@Service_Id", service.ServiceID);
+        //        cmd.Parameters.AddWithValue("@Service_Name", service.ServiceName);
+        //        cmd.Parameters.AddWithValue("@Service_Type", service.ServiceCategory);
+
+        //        con.Open();
+        //        cmd.ExecuteNonQuery();
+        //        con.Close();
+        //    }
+        //}
 
         public static IEnumerable<Service> DisplayServices()
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                return context.Services.ToList();
+                return context.Services.ToList();               //Returning the list of the services
             }
         }
 
@@ -75,7 +75,7 @@ namespace OnlineEventManagement.DAL.Repository
             bool IsExist = false;
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                IsExist = (context.Services.Where(e => e.ServiceID == serviceId).FirstOrDefault() == null);
+                IsExist = (context.Services.Where(e => e.ServiceID == serviceId).FirstOrDefault() == null);     //Verifying the existance of the service
             }
             return IsExist;
         }
@@ -83,17 +83,25 @@ namespace OnlineEventManagement.DAL.Repository
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                return context.Services.Where(e => e.ServiceID == serviceId).FirstOrDefault();
+                return context.Services.Where(e => e.ServiceID == serviceId).FirstOrDefault();                  //Getting a service by passing the service id as a parameter
             }
         }
         public static void DeleteService(string serviceId)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                Service service = GetServiceById(serviceId);
-                context.Services.Attach(service);
-                context.Services.Remove(service);
-                context.SaveChanges();
+                Service service = GetServiceById(serviceId);                                                    //Getting the service object to be deleted
+                context.Services.Attach(service);                                                               //Attaching the object to the context
+                context.Services.Remove(service);                                                               //Removing the object from the context
+                context.SaveChanges();                                                                          //Updating the database after deleting the service
+            }
+        }
+        public static void UpdateService(Service service)
+        {
+            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
+            {
+                context.Entry(service).State = System.Data.Entity.EntityState.Modified;        //Updating the service details
+                context.SaveChanges();                                                              //Saving the changes
             }
         }
     }

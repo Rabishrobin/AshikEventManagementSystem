@@ -54,7 +54,7 @@ namespace OnlineEventManagementSystem.Entity
 
         public static string GenerateUserID(string name, long mobileNumber)
         {
-            string UserId = "C" + name.Substring(0, 3).ToUpper() + mobileNumber.ToString().Substring(0, 4);
+            string UserId = "C" + name.Substring(0, 3).ToUpper() + mobileNumber.ToString().Substring(0, 4);         //Generating user id
             return UserId;
         }
     }

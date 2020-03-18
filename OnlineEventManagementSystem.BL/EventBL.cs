@@ -12,7 +12,7 @@ namespace OnlineEventManagementSystem.BL
         }
         public static Event GetEventById(string eventId)
         {
-            return EventRepository.GetEventById(eventId);
+            return EventRepository.GetEventById(eventId);    //Getting a particular event
         }
         public static IEnumerable<Event> DisplayEvents()
         {
@@ -24,11 +24,11 @@ namespace OnlineEventManagementSystem.BL
         }
         public static void DeleteEvent(string eventId)
         {
-            EventRepository.DeleteEvent(eventId);
+            EventRepository.DeleteEvent(eventId);           //Deleting an event from the database
         }
         public static void UpdateEvent(Event updatedEvent)
         {
-            EventRepository.UpdateEvent(updatedEvent);
+            EventRepository.UpdateEvent(updatedEvent);      //Updating the event details in the database
         }
     }
 }
