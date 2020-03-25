@@ -1,5 +1,6 @@
 ﻿using OnlineEventManagement.DAL;
 using OnlineEventManagementSystem.Entity;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace OnlineEventManagement.Repository.DAL
@@ -20,6 +21,13 @@ namespace OnlineEventManagement.Repository.DAL
             {
                 Account user = context.Users.Where(u => u.UserMailId == userMailId && u.UserPassword == password).FirstOrDefault();     //Verfying the user mailid and password
                 return user;
+            }
+        }
+        public static IEnumerable<Account> DisplayCustomers()
+        {
+            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
+            {
+                return context.Users.ToList();                         //Getting all the user details from the database as a list
             }
         }
     }

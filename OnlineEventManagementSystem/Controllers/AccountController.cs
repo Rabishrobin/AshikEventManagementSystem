@@ -1,7 +1,10 @@
 ﻿using OnlineEventManagementSystem.BL;
 using OnlineEventManagementSystem.Entity;
 using OnlineEventManagementSystem.Models;
+using System;
+using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace OnlineEventManagementSystem.Controllers
 {
@@ -15,11 +18,11 @@ namespace OnlineEventManagementSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignUp(SignUpViewModel users)
+        public ActionResult SignUp(SignUpModel users)
         {
             if (ModelState.IsValid)
             {
-                var user = AutoMapper.Mapper.Map<SignUpViewModel, Account>(users);      //Automapping user details from model to entity 
+                var user = AutoMapper.Mapper.Map<SignUpModel, Account>(users);      //Automapping user details from model to entity 
                 AccountBL.AddUser(user);                                                //Adding the user details to the database
                 return RedirectToAction("SignIn");                                      //Redirecting to the login page
             }
@@ -28,22 +31,44 @@ namespace OnlineEventManagementSystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult SignIn()
+        public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult SignIn(SignInViewModel user)
+        public ActionResult Login(LoginModel model)
         {
-            var account = AccountBL.ValidateLogIn(user.UserMailId, user.Password);      //Verifying the user mail id and password
-            if (account!=null)
+            var user = AccountBL.ValidateLogIn(model.UserMailId, model.Password);      //Verifying the user mail id and password
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction("Dashboard",account);                            //Redirecting to the user dashboard
+                return View(model);
             }
-            return View();
-        }
 
+            if (user != null)
+            {
+                FormsAuthentication.SetAuthCookie(model.UserMailId, false);
+
+                var authTicket = new FormsAuthenticationTicket(1, user.UserMailId, DateTime.Now, DateTime.Now.AddMinutes(20), false, user.Roles);
+                string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                HttpContext.Response.Cookies.Add(authCookie);
+                return RedirectToAction("Index", "Home");
+            }
+
+            else
+            {
+                ModelState.AddModelError("", "Invalid login attempt.");
+            }
+            return View(model);
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            FormsAuthentication.SignOut();          //AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Login", "Account");
+        }
         public ActionResult Dashboard(Account user)
         {
             return View(user);

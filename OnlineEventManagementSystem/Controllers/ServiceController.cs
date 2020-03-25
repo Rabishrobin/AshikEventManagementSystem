@@ -6,10 +6,11 @@ using System.Web.Mvc;
 
 namespace OnlineEventManagementSystem.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ServiceController : Controller
     {
         [HttpGet]
-        public ViewResult DisplaySerivce()
+        public ViewResult DisplaySerivces()
         {
             IEnumerable<Service> services = ServiceBL.DisplayServices();                        //Getting the services from the database
             ViewBag.Services = services;                                                        //Passing them to the view using view bag

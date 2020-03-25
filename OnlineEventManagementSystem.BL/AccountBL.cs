@@ -1,5 +1,6 @@
 ﻿using OnlineEventManagement.Repository.DAL;
 using OnlineEventManagementSystem.Entity;
+using System.Collections.Generic;
 
 namespace OnlineEventManagementSystem.BL
 {
@@ -12,6 +13,10 @@ namespace OnlineEventManagementSystem.BL
         public static Account ValidateLogIn(string username,string password)
         {
            return AccountRepository.VerifyMailId(username, password);           //Verifying the user mail id and password
+        }
+        public static IEnumerable<Account> DisplayCustomers()
+        {
+            return AccountRepository.DisplayCustomers();         //Getting the user details as object in list from the database 
         }
     }
 }

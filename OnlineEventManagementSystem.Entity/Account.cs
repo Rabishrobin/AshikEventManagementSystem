@@ -48,9 +48,9 @@ namespace OnlineEventManagementSystem.Entity
         public string UserGender { get; set; }
 
         [Required]
-        [Column("Role")]
+        [Column("Roles")]
         [MaxLength(10)]
-        public string Role { get; set; }
+        public string Roles { get; set; }
 
         public static string GenerateUserID(string name, long mobileNumber)
         {

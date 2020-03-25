@@ -28,9 +28,11 @@
     padding-left: 50px;
     margin-right: auto;
     /*margin-left: auto;*/
-    display: table;
+    display: flex;
 }
-
+.title-bar{
+    width:30%;
+}
 .title-nav {
     text-decoration: none;
     color: orange;
@@ -44,34 +46,56 @@
         color: black;
     }
 
-
-.nav-button li {
-    float: left;
-    list-style: none;
-    text-align: center;
+.body-content {
     background-color: white;
-    margin-right: 30px;
-    width: 150px;
-    line-height: 20px;
+    width: 70%;
+    margin-left: 15%;
+    border-radius: 3%;
 }
 
-    .nav-button li a {
-        text-decoration: none;
-        color: black;
-        display: block;
+h2 {
+    color: orange;
+}
+
+ul {
+    list-style: none;
+    background-color: white;
+    text-align:center;
+}
+
+    ul li {
+        display: inline-block;
+        position:relative;
+        line-height: 20px;
+        width:150px;
+        right:0;
     }
 
-        .nav-button li a:hover {
+        ul li a {
             text-decoration: none;
-            color: orange;
+            color: black;
+            display: block;
+            padding:8px 25px;
         }
 
-.body-content {
-    background-color:white;
-    width:50%;
-    margin-left:50%;
-    border-radius:3%;
-}
-h2{
-    color:orange;
+            ul li a:hover {
+                text-decoration: none;
+                color: orange;
+            }
+
+                ul li ul.drop-down {
+                    display: none;
+                    position: absolute;
+                }
+
+                ul li:hover ul.drop-down {
+                    display: block;
+                    text-align:center;
+                }
+                ul li ul.drop-down li{
+                    display:block;
+                }
+.error-text{
+    color:red;
+    font-size:12px;
 }

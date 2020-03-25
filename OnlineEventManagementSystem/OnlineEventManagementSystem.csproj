@@ -161,7 +161,7 @@
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Account\SignIn.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
@@ -178,8 +178,8 @@
     <Compile Include="MappingConfig.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
-    <Compile Include="Models\SignInViewModel.cs" />
-    <Compile Include="Models\SignUpViewModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\SignUpModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,7 +189,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Account\SignUp.cshtml" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\Dashboard.cshtml" />
@@ -198,11 +197,10 @@
     <Content Include="Views\Service\AddService.cshtml" />
     <Content Include="Views\Event\DisplayEvents.cshtml" />
     <Content Include="Views\Event\UpdateEvent.cshtml" />
-    <Content Include="Views\Service\DisplaySerivce.cshtml" />
-    <Content Include="Views\Service\DeleteService.cshtml" />
-    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Service\DisplaySerivces.cshtml" />
     <Content Include="Views\Home\Event.cshtml" />
-    <Content Include="Views\Shared\_UserLayout.cshtml" />
+    <Content Include="Views\Service\UpdateService.cshtml" />
+    <Content Include="Views\Admin\DisplayCustomers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

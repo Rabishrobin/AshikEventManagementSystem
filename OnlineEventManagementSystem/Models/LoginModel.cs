@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OnlineEventManagementSystem.Models
 {
-    public class SignInViewModel
+    public class LoginModel
     {
         //Validation for mail id
         [Required(ErrorMessage = "Please enter your email address")]

@@ -1,23 +1,32 @@
-﻿@model OnlineEventManagementSystem.Models.EventModel
+﻿@model OnlineEventManagementSystem.Models.ServiceModel
 
 @{
-    ViewBag.Title = "UpdateEvent";
+    ViewBag.Title = "UpdateService";
 }
+
 @if (TempData["Message"] != null)
 {
     @Html.Label((string)TempData["Message"])
-    @Html.ActionLink("Display events", "DisplayEvents")
+    @Html.ActionLink("Display services", "DisplayService")
 }
-@using (Html.BeginForm("UpdateEvent", "Event", FormMethod.Post))
+@using (Html.BeginForm("UpdateService", "Service", FormMethod.Post))
 {
-    @Html.HiddenFor(Model => Model.EventId)
+    @Html.HiddenFor(Model => Model.ServiceId)
     <table cellpadding="10" align="center">
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.EventName)
+                @Html.LabelFor(Model => Model.ServiceName)
             </td>
             <td>
-                @Html.EditorFor(Model => Model.EventName)
+                @Html.EditorFor(Model => Model.ServiceName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.ServiceCategory)
+            </td>
+            <td>
+                
             </td>
         </tr>
         <tr>
@@ -38,8 +47,7 @@
             </td>
         </tr>
     </table>
-    
-}
 
+}
 
 

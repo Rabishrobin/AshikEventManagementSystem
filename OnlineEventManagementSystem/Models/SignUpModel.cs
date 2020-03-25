@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OnlineEventManagementSystem.Models
 {
-    public class SignUpViewModel
+    public class SignUpModel
     {
         public string UserID { get; set; }
 

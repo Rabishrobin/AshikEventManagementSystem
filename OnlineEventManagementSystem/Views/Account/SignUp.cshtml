@@ -1,4 +1,4 @@
-﻿@model OnlineEventManagementSystem.Models.SignUpViewModel
+﻿@model OnlineEventManagementSystem.Models.SignUpModel
 
 @{
     ViewBag.Title = "SignUp";
@@ -16,7 +16,7 @@
             </td>
             <td>
                 @Html.TextBoxFor(Model => Model.UserFirstName, new { @maxlength = "30" })<br />
-                @Html.ValidationMessageFor(model => model.UserFirstName)
+                @Html.ValidationMessageFor(model => model.UserFirstName,"", new { @class = "error-text" })
             </td>
         </tr>
         <tr>
@@ -25,7 +25,7 @@
             </td>
             <td>
                 @Html.TextBoxFor(Model => Model.UserLastName, new { @maxlength = "30" })<br />
-                @Html.ValidationMessageFor(model => model.UserLastName)
+                @Html.ValidationMessageFor(model => model.UserLastName, "", new { @class = "error-text" })
             </td>
         </tr>
         <tr>
@@ -34,7 +34,7 @@
             </td>
             <td>
                 @Html.TextBoxFor(Model => Model.UserMobileNumber, new { @maxlength = "10" })<br />
-                @Html.ValidationMessageFor(model => model.UserMobileNumber)
+                @Html.ValidationMessageFor(model => model.UserMobileNumber, "", new { @class = "error-text" })
             </td>
         </tr>
         <tr>
@@ -43,7 +43,7 @@
             </td>
             <td>
                 @Html.TextBoxFor(Model => Model.UserMailId, new { @maxlength = "64" })<br />
-                @Html.ValidationMessageFor(model => model.UserMailId)
+                @Html.ValidationMessageFor(model => model.UserMailId, "", new { @class = "error-text" })
             </td>
         </tr>
         <tr>
@@ -53,7 +53,7 @@
             <td>
                 @Html.RadioButtonFor(Model => Model.UserGender, "Male")Male
                 @Html.RadioButtonFor(Model => Model.UserGender, "Female")Female<br />
-                @Html.ValidationMessageFor(model => model.UserGender)
+                @Html.ValidationMessageFor(model => model.UserGender, "", new { @class = "error-text" })
             </td>
         </tr>
         <tr>
@@ -62,7 +62,7 @@
             </td>
             <td>
                 @Html.PasswordFor(Model => Model.UserPassword, new { @maxlength = "15" })<br />
-                @Html.ValidationMessageFor(model => model.UserPassword)
+                @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "error-text" })
             </td>
         </tr>
         <tr>
@@ -71,7 +71,7 @@
             </td>
             <td>
                 @Html.PasswordFor(Model => Model.ReenteredPassword, new { @maxlength = "15" })<br />
-                @Html.ValidationMessageFor(model => model.ReenteredPassword)
+                @Html.ValidationMessageFor(model => model.ReenteredPassword, "", new { @class = "error-text" })
             </td>
         </tr>
         <tr>
@@ -79,8 +79,8 @@
                 @Html.LabelFor(Model => Model.UserDOB)
             </td>
             <td>
-                @Html.EditorFor(Model => Model.UserDOB)
-                @Html.ValidationMessageFor(model => model.UserDOB)
+                @Html.EditorFor(Model => Model.UserDOB)<br />
+                @Html.ValidationMessageFor(model => model.UserDOB, "", new { @class = "error-text" })
             </td>
         </tr>
         <tr colspan="2">

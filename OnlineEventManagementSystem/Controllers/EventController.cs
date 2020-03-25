@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace OnlineEventManagementSystem.Controllers
 {
-
+    [Authorize(Roles ="Admin")]
     public class EventController : Controller
     {
         [HttpGet]

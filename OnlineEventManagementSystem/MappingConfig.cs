@@ -10,9 +10,9 @@ namespace OnlineEventManagementSystem
         {
             Mapper.Initialize(config =>
             {
-                config.CreateMap<SignUpViewModel, Account>()
+                config.CreateMap<SignUpModel, Account>()
                 .ForMember(dest => dest.UserID, opt => opt.MapFrom(src => Account.GenerateUserID(src.UserFirstName, src.UserMobileNumber)))
-                .ForMember(dest => dest.Role, opt => opt.MapFrom(src =>"User"));
+                .ForMember(dest => dest.Roles, opt => opt.MapFrom(src =>"User"));
                 config.CreateMap<EventModel, Event>()
                 .ForMember(dest => dest.EventId, opt => opt.MapFrom(src => Event.GenerateEventID(src.EventName, src.EventType)));
                 config.CreateMap<ServiceModel, Service>()

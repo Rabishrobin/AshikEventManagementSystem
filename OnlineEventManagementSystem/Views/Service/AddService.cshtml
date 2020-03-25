@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "AddService";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @if (TempData["Message"] != null)
 {
@@ -24,6 +23,7 @@
                 @Html.LabelFor(Model => Model.ServiceCategory)
             </td>
             <td>
+                @Html.DropDownList(Model => Model.ServiceCategory, "Decoration")Decoration
 
                 @Html.ValidationMessageFor(model => model.ServiceCategory)
             </td>

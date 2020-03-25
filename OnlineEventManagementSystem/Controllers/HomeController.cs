@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace OnlineEventManagementSystem.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ViewResult Index()

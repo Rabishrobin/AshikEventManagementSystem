@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202003171250521_serviceType.designer.cs">
       <DependentUpon>202003171250521_serviceType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003191225050_auth.cs" />
+    <Compile Include="Migrations\202003191225050_auth.designer.cs">
+      <DependentUpon>202003191225050_auth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repository\EventRepository.cs" />
     <Compile Include="Migrations\202002280822099_InitialCreate.cs" />
     <Compile Include="Migrations\202002280822099_InitialCreate.designer.cs">
@@ -158,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003171250521_serviceType.resx">
       <DependentUpon>202003171250521_serviceType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003191225050_auth.resx">
+      <DependentUpon>202003191225050_auth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
