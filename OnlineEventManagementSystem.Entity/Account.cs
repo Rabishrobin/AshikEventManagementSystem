@@ -8,8 +8,8 @@ namespace OnlineEventManagementSystem.Entity
     {
         [Key]
         [Column("User Id")]
-        [MaxLength(10)]
-        public string UserID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int UserID { get; set; }
 
         [Required]
         [Column("Mail Id")]
@@ -52,10 +52,9 @@ namespace OnlineEventManagementSystem.Entity
         [MaxLength(10)]
         public string Roles { get; set; }
 
-        public static string GenerateUserID(string name, long mobileNumber)
+        public static int GenerateUserID(int id)
         {
-            string UserId = "C" + name.Substring(0, 3).ToUpper() + mobileNumber.ToString().Substring(0, 4);         //Generating user id
-            return UserId;
+            return int.Parse((int)'C'+ DateTime.Now.Year.ToString().Substring(2,2)+id.ToString().PadLeft(3,'0'));
         }
     }
 }

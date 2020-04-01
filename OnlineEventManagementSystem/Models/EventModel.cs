@@ -4,7 +4,7 @@ namespace OnlineEventManagementSystem.Models
 {
     public class EventModel
     {
-        public string EventId { get; set; }
+        public int EventId { get; set; }
 
         //Validation for event name
         [Required(ErrorMessage ="Please enter the event name")]

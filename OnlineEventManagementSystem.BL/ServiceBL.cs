@@ -1,4 +1,5 @@
 ﻿using OnlineEventManagement.DAL.Repository;
+using OnlineEventManagement.DAL.Interface;
 using OnlineEventManagementSystem.Entity;
 using System.Collections.Generic;
 
@@ -6,29 +7,34 @@ namespace OnlineEventManagementSystem.BL
 {
     public class ServiceBL
     {
+        static IElementRepository serviceRepository;
+        static ServiceBL()
+        {
+            serviceRepository = new ServiceRepository();
+        }
         public static void AddService(Service newService)
         {
-            ServiceRepository.AddService(newService);       //Adding new service
+            serviceRepository.AddElement(newService);       //Adding new service
         }
-        public static Service GetServiceById(string serviceId)
+        public static Service GetServiceById(int serviceId)
         {
-            return ServiceRepository.GetServiceById(serviceId);    //Getting a particular service from the database
+            return (Service)serviceRepository.GetElementById(serviceId);    //Getting a particular service from the database
         }
         public static IEnumerable<Service> DisplayServices()
         {
-            return ServiceRepository.DisplayServices();         //Getting the services from the database
+            return (IEnumerable<Service>)serviceRepository.DisplayElements();         //Getting the services from the database
         }
-        public static bool VerifyService(string serviceId)
+        public static int? VerifyService(string serviceName)
         {
-            return ServiceRepository.VerifyService(serviceId);    //Verifying service existance
+            return serviceRepository.VerifyExistance(serviceName);    //Verifying service existance
         }
-        public static void DeleteService(string serviceId)
+        public static void DeleteService(int serviceId)
         {
-            ServiceRepository.DeleteService(serviceId);         //Deleting service from the database
+            serviceRepository.DeleteElement(serviceId);         //Deleting service from the database
         }
         public static void UpdateService(Service service)
         {
-            ServiceRepository.UpdateService(service);      //Updating the service details in the database
+            serviceRepository.UpdateElement(service);      //Updating the service details in the database
         }
     }
 }

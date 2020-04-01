@@ -1,41 +1,23 @@
-﻿using OnlineEventManagement.DAL;
-using OnlineEventManagementSystem.Entity;
+﻿using OnlineEventManagementSystem.Entity;
+using OnlineEventManagement.DAL.Interface;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace OnlineEventManagement.DAL.Repository
 {
-    public class ServiceRepository
+    public class ServiceRepository : IElementRepository
     {
-        public static void AddService(Service newService)
+        public void AddElement(object service)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                context.Services.Add(newService);               //Adding new service to the database
+                context.Services.Add((Service)service);               //Adding new service to the database
                 context.SaveChanges();                          //Updating the database
             }
         }
 
-        //public static void AddService(Service service)
-        //{
-        //    using (SqlConnection con = new SqlConnection("EventManagement"))
-        //    {
-        //        SqlCommand cmd = new SqlCommand("Service_Insert", con);
-        //        cmd.CommandType = CommandType.StoredProcedure;
-
-        //        cmd.Parameters.AddWithValue("@Service_Id", service.ServiceID);
-        //        cmd.Parameters.AddWithValue("@Service_Name", service.ServiceName);
-        //        cmd.Parameters.AddWithValue("@Service_Type", service.ServiceCategory);
-
-        //        con.Open();
-        //        cmd.ExecuteNonQuery();
-        //        con.Close();
-        //    }
-        //}
-
-        public static IEnumerable<Service> DisplayServices()
+        public IEnumerable<object> DisplayElements()
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
@@ -43,64 +25,41 @@ namespace OnlineEventManagement.DAL.Repository
             }
         }
 
-        //public IEnumerable<Service> DisplayServices()
-        //{
-        //    List<Service> serviceList = new List<Service>();
-
-        //    using (SqlConnection con = new SqlConnection("EventManagement"))
-        //    {
-        //        SqlCommand cmd = new SqlCommand("spGetAllEmployees", con);
-        //        cmd.CommandType = CommandType.StoredProcedure;
-
-        //        con.Open();
-        //        SqlDataReader rdr = cmd.ExecuteReader();
-
-        //        while (rdr.Read())
-        //        {
-        //            Service service = new Service();
-
-        //            service.ServiceID = rdr["[Service Id]"].ToString();
-        //            service.ServiceName = rdr["[Service Name]"].ToString();
-        //            service.ServiceCategory = rdr["[Service Type]"].ToString();
-
-        //            serviceList.Add(service);
-        //        }
-        //        con.Close();
-        //    }
-        //    return serviceList;
-        //}
-
-        public static bool VerifyService(string serviceId)
+        public int? VerifyExistance(string serviceName)
         {
-            bool IsExist = false;
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                IsExist = (context.Services.Where(e => e.ServiceID == serviceId).FirstOrDefault() == null);     //Verifying the existance of the service
+                int? id = null;
+                if (context.Services.Where(u => u.ServiceName==serviceName).FirstOrDefault() == null)                   //Verifying service existance
+                {
+                    IEnumerable<Service> services = context.Services.ToList();
+                    id = services.Count() == 0 ? 0 : int.Parse(services.Last().ServiceID.ToString().Substring(4)) + 1;
+                }
+                return id;                               
             }
-            return IsExist;
         }
-        public static Service GetServiceById(string serviceId)
+        public object GetElementById(int serviceId)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
                 return context.Services.Where(e => e.ServiceID == serviceId).FirstOrDefault();                  //Getting a service by passing the service id as a parameter
             }
         }
-        public static void DeleteService(string serviceId)
+        public void DeleteElement(int serviceId)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                Service service = GetServiceById(serviceId);                                                    //Getting the service object to be deleted
+                Service service = (Service)GetElementById(serviceId);                                                    //Getting the service object to be deleted
                 context.Services.Attach(service);                                                               //Attaching the object to the context
                 context.Services.Remove(service);                                                               //Removing the object from the context
                 context.SaveChanges();                                                                          //Updating the database after deleting the service
             }
         }
-        public static void UpdateService(Service service)
+        public void UpdateElement(object service)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                context.Entry(service).State = System.Data.Entity.EntityState.Modified;        //Updating the service details
+                context.Entry((Service)service).State = System.Data.Entity.EntityState.Modified;        //Updating the service details
                 context.SaveChanges();                                                              //Saving the changes
             }
         }

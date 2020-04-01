@@ -20,12 +20,11 @@
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.ServiceCategory)
+                @Html.LabelFor(Model => Model.CategoryID)
             </td>
             <td>
-                @Html.DropDownList(Model => Model.ServiceCategory, "Decoration")Decoration
-
-                @Html.ValidationMessageFor(model => model.ServiceCategory)
+                @Html.DropDownListFor(Model => Model.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"))
+                @Html.ValidationMessageFor(model => model.CategoryID)
             </td>
         </tr>
         <tr>
@@ -33,7 +32,7 @@
                 @Html.LabelFor(Model => Model.EventType)
             </td>
             <td>
-                @Html.RadioButtonFor(Model => Model.EventType,"Personal")Personal
+                @Html.RadioButtonFor(Model => Model.EventType, "Personal")Personal
                 @Html.RadioButtonFor(Model => Model.EventType, "Corporate")Corporate
                 @Html.RadioButtonFor(Model => Model.EventType, "Both")Both
 

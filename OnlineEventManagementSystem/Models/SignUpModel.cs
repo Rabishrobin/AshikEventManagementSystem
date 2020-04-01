@@ -5,7 +5,6 @@ namespace OnlineEventManagementSystem.Models
 {
     public class SignUpModel
     {
-        public string UserID { get; set; }
 
         //Validation for mail id
         [Required(ErrorMessage = "Please enter your email address")]

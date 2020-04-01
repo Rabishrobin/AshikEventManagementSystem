@@ -13,13 +13,14 @@
                 <div class="title-bar">
                     @Html.ActionLink("Ashik Event Management", "Index", "Home", new { area = "" }, new { @class = "title-nav" })
                 </div>
-                <div>
+                <div class="option-bar">
                     <ul>
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
 
                         @if (HttpContext.Current.User.IsInRole("User"))
                         {
-
+                            <li>@Html.ActionLink("Events", "Event", "Home")</li>
+                            <li>@Html.ActionLink("Services", "Service", "Home")</li>
                         }
                         @if (HttpContext.Current.User.IsInRole("Admin"))
                         {
@@ -37,6 +38,13 @@
                                     <li>@Html.ActionLink("Add Service", "AddService", "Service")</li>
                                 </ul>
                             </li>
+                            <li>
+                                @Html.ActionLink(" Service categories", "DisplayCategories", "ServiceCategory")
+                                <ul class="drop-down">
+                                    <li>@Html.ActionLink("View categories", "DisplayCategories", "ServiceCategory")</li>
+                                    <li>@Html.ActionLink("Add categories", "AddCategory", "ServiceCategory")</li>
+                                </ul>
+                            </li>
                             <li>@Html.ActionLink("Customers", "DisplayCustomers", "Admin")</li>
                         }
                         @if (Request.IsAuthenticated)
@@ -45,8 +53,6 @@
                         }
                         else
                         {
-                            <li>@Html.ActionLink("Events", "Event", "Home")</li>
-                            <li>@Html.ActionLink("Services", "Service", "Home")</li>
                             <li>@Html.ActionLink("Register", "SignUp", "Account")</li>
                             <li>@Html.ActionLink("Login", "Login", "Account")</li>
                         }

@@ -8,8 +8,9 @@ namespace OnlineEventManagementSystem.Entity
     {
         [Key]
         [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [Column("Service Id")]
-        public string ServiceID { get; set; }
+        public int ServiceID { get; set; }
 
         [Required]
         [Column("Service Name")]
@@ -17,19 +18,16 @@ namespace OnlineEventManagementSystem.Entity
         public string ServiceName { get; set; }
 
         [Required]
-        [Column("Service Category")]
-        [MaxLength(20)]
-        public string ServiceCategory { get; set; }
-
-        [Required]
         [Column("Event Type")]
         [MaxLength(20)]
         public string EventType { get; set; }
 
-        public static string GenerateServiceID(string serviceName, string serviceCategory)
+        public int CategoryID { get; set; }
+        public ServiceCategory Category { get; set; }
+
+        public static int GenerateServiceID(int id)
         {
-            string eventId = "E" + serviceCategory[0] + serviceName.Length + serviceName.Substring(0, 4).ToUpper();     //Generating service id
-            return eventId;
+            return int.Parse((int)'S' + DateTime.Now.Year.ToString().Substring(2, 2) + id.ToString().PadLeft(3, '0'));
         }
     }
 }

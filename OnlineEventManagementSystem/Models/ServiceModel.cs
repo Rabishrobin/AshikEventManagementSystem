@@ -8,7 +8,7 @@ namespace OnlineEventManagementSystem.Models
 {
     public class ServiceModel
     {
-        public string ServiceId { get; set; }
+        public int ServiceId { get; set; }
 
         //Validation for service name
         [Required(ErrorMessage = "Please enter the service name")]
@@ -20,7 +20,7 @@ namespace OnlineEventManagementSystem.Models
         //Validation for service category
         [Required]
         [Display(Name = "Service Category")]
-        public string ServiceCategory { get; set; }
+        public int CategoryID { get; set; }
 
         //Validaton for the event type where the service is used
         [Required]

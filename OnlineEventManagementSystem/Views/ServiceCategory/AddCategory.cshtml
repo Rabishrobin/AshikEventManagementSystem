@@ -1,0 +1,29 @@
+﻿@model OnlineEventManagementSystem.Models.ServiceCategoryModel
+
+@{
+    ViewBag.Title = "AddCategory";
+}
+
+@if (TempData["Message"] != null)
+{
+@Html.Label((string)TempData["Message"])
+}
+@using (Html.BeginForm("AddCategory", "ServiceCategory", FormMethod.Post))
+{
+    @Html.ValidationSummary(true);
+    <table>
+        <tr>
+            <td>@Html.LabelFor(Model => Model.CategoryName)</td>
+            <td>
+                @Html.TextBoxFor(Model => Model.CategoryName, new { @maxlength = "20" })
+                @Html.ValidationMessageFor(model => model.CategoryName)
+            </td>
+        </tr>
+        <tr colspan="2">
+            <td>
+                <input type="submit" value="Add" />
+            </td>
+        </tr>
+    </table>
+}
+

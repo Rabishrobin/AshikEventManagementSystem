@@ -10,9 +10,13 @@ namespace OnlineEventManagementSystem.BL
         {
             AccountRepository.AddUser(user);        //Adding user details
         }
-        public static Account ValidateLogIn(string username,string password)
+        public static int? VerifyMailId(string mailId)
         {
-           return AccountRepository.VerifyMailId(username, password);           //Verifying the user mail id and password
+            return AccountRepository.VerifyMailId(mailId);                  //Verifying user existance
+        }
+        public static Account ValidateLogin(string username,string password)
+        {
+           return AccountRepository.ValidateLogin(username, password);           //Verifying the user mail id and password
         }
         public static IEnumerable<Account> DisplayCustomers()
         {

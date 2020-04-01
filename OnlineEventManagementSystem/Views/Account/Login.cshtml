@@ -3,33 +3,30 @@
 @{
     ViewBag.Title = "Login";
 }
-
+<h2 style="text-align:center">SignIn</h2>
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
     @Html.ValidationSummary(true);
-    <h2 style="text-align:center">SignIn</h2>
     <table cellpadding="10" align="center">
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.UserMailId)
-            </td>
-            <td>
-                @Html.TextBoxFor(Model => Model.UserMailId, new { @maxlength = "64" })
+                @Html.LabelFor(Model => Model.UserMailId)<br />
+                @Html.TextBoxFor(Model => Model.UserMailId, new { @maxlength = "64", @class = "box" })
             </td>
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.Password)
-            </td>
-            <td>
-                @Html.PasswordFor(Model => Model.Password, new { @maxlength = "15" })
+                @Html.LabelFor(Model => Model.Password)<br />
+                @Html.PasswordFor(Model => Model.Password, new { @maxlength = "15", @class = "box"})
             </td>
         </tr>
         <tr>
-            <td>
-                <input type="submit" value="Login" />
+            <td>@Html.ValidationMessage("LoginError", new { @class = "error-text" })</td>
+        </tr>
+        <tr style="text-align:center">
+            <td colspan="2">
+                <input type="submit" value="Login" class="button"/>
             </td>
         </tr>
     </table>
-
 }

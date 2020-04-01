@@ -14,8 +14,8 @@ namespace OnlineEventManagementSystem.Controllers
         }
         public ViewResult Event()
         {
-            IEnumerable<Event> events=EventBL.DisplayEvents();                  //Getting the events from the database as object
-            ViewBag.Events = events;                                            //Passing the list from the controller to view using viewbag
+            //IEnumerable<Event> events= EventBL.DisplayEvents();                  //Getting the events from the database as object
+            //ViewBag.Events = events;                                            //Passing the list from the controller to view using viewbag
             return View();
         }
         public ViewResult Service()

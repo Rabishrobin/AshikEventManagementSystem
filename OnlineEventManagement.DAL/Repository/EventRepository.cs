@@ -1,59 +1,64 @@
 ﻿using OnlineEventManagement.DAL;
+using OnlineEventManagement.DAL.Interface;
 using OnlineEventManagementSystem.Entity;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace OnlineEventManagement.Repository.DAL
 {
-    public class EventRepository
+    public class EventRepository : IElementRepository
     {
-        public static IEnumerable<Event> DisplayEvents()
+        public IEnumerable<object> DisplayElements()
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
                 return context.Events.ToList();                         //Getting all the events from the database as a list
             }
         }
-        public static bool VerifyEvent(string eventId)
+        public int? VerifyExistance(string eventName)
         {
-            bool IsExist = false;
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                IsExist = (context.Events.Where(e => e.EventId == eventId).FirstOrDefault() == null);           //Verifying the existance of the event
+                int? id = null;
+                if (context.Events.Where(u => u.EventName == eventName).FirstOrDefault() == null)
+                {
+                    IEnumerable<Event> events = context.Events.ToList();
+                    id = events.Count() == 0 ? 0 : int.Parse(events.Last().EventId.ToString().Substring(4)) + 1;
+                }
+                return id;                   //Verifying user existance
             }
-            return IsExist;
         }
-        public static void AddEvent(Event newEvent)
+        public void AddElement(object newEvent)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                context.Events.Add(newEvent);           //Adding the event details to the context
+                context.Events.Add((Event)newEvent);           //Adding the event details to the context
                 context.SaveChanges();                  //Saving the changes to the database
 
             }
         }
-        public static Event GetEventById(string eventId)
+        public object GetElementById(int eventId)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
                 return context.Events.Where(e => e.EventId == eventId).FirstOrDefault();        //Getting the event details by passing the id 
             }
         }
-        public static void DeleteEvent(string eventId)
+        public void DeleteElement(int eventId)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                Event existingEvent = GetEventById(eventId);                    //Getting the event object to be deleted
+                Event existingEvent = (Event)GetElementById(eventId);                    //Getting the event object to be deleted
                 context.Events.Attach(existingEvent);                           //Attaching the object to be removed
                 context.Events.Remove(existingEvent);                           //Removing the event from the database
                 context.SaveChanges();                                          //Saving the changes
             }
         }
-        public static void UpdateEvent(Event updatedEvent)
+        public void UpdateElement(object updatedEvent)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                context.Entry(updatedEvent).State = System.Data.Entity.EntityState.Modified;        //Updating the event details
+                context.Entry((Event)updatedEvent).State = System.Data.Entity.EntityState.Modified;        //Updating the event details
                 context.SaveChanges();                                                              //Saving the changes
             }
         }

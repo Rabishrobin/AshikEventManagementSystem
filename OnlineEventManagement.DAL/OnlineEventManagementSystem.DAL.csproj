@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\IElementRepository.cs" />
     <Compile Include="Migrations\202003041027194_eventTable.cs" />
     <Compile Include="Migrations\202003041027194_eventTable.designer.cs">
       <DependentUpon>202003041027194_eventTable.cs</DependentUpon>
@@ -72,6 +73,22 @@
     <Compile Include="Migrations\202003191225050_auth.cs" />
     <Compile Include="Migrations\202003191225050_auth.designer.cs">
       <DependentUpon>202003191225050_auth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003280152405_idchange.cs" />
+    <Compile Include="Migrations\202003280152405_idchange.designer.cs">
+      <DependentUpon>202003280152405_idchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003300202505_userid.cs" />
+    <Compile Include="Migrations\202003300202505_userid.designer.cs">
+      <DependentUpon>202003300202505_userid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003300455080_category.cs" />
+    <Compile Include="Migrations\202003300455080_category.designer.cs">
+      <DependentUpon>202003300455080_category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003301032483_category1.cs" />
+    <Compile Include="Migrations\202003301032483_category1.designer.cs">
+      <DependentUpon>202003301032483_category1.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\EventRepository.cs" />
     <Compile Include="Migrations\202002280822099_InitialCreate.cs" />
@@ -110,6 +127,7 @@
     <Compile Include="OnlineEventManagementDBContext.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\ServiceCategoryRepository.cs" />
     <Compile Include="Repository\ServiceRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +183,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003191225050_auth.resx">
       <DependentUpon>202003191225050_auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003280152405_idchange.resx">
+      <DependentUpon>202003280152405_idchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003300202505_userid.resx">
+      <DependentUpon>202003300202505_userid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003300455080_category.resx">
+      <DependentUpon>202003300455080_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003301032483_category1.resx">
+      <DependentUpon>202003301032483_category1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

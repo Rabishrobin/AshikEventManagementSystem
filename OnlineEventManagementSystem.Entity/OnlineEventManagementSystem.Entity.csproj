@@ -56,6 +56,7 @@
     <Compile Include="Event.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service.cs" />
+    <Compile Include="ServiceCategory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

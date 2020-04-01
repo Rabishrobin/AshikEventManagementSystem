@@ -18,15 +18,21 @@ namespace OnlineEventManagementSystem.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignUp(SignUpModel users)
+        public ActionResult SignUp(SignUpModel userModel)
         {
-            if (ModelState.IsValid)
+            int? id = AccountBL.VerifyMailId(userModel.UserMailId);
+            bool CanAddUser = id!=null;
+            if (CanAddUser)
             {
-                var user = AutoMapper.Mapper.Map<SignUpModel, Account>(users);      //Automapping user details from model to entity 
+                var user = AutoMapper.Mapper.Map<SignUpModel, Account>(userModel);      //Automapping user details from model to entity 
+                user.UserID = Account.GenerateUserID(id.GetValueOrDefault());           //Generating user id
                 AccountBL.AddUser(user);                                                //Adding the user details to the database
-                return RedirectToAction("SignIn");                                      //Redirecting to the login page
+                return RedirectToAction("Login","Account");                                      //Redirecting to the login page
             }
-
+            else
+            {
+                ModelState.AddModelError("SignUpError", "User already exist");               //Passing login error to the view
+            }
             return View();
         }
 
@@ -39,12 +45,7 @@ namespace OnlineEventManagementSystem.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
-            var user = AccountBL.ValidateLogIn(model.UserMailId, model.Password);      //Verifying the user mail id and password
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
+            var user = AccountBL.ValidateLogin(model.UserMailId, model.Password);      //Verifying the user mail id and password
             if (user != null)
             {
                 FormsAuthentication.SetAuthCookie(model.UserMailId, false);
@@ -55,10 +56,9 @@ namespace OnlineEventManagementSystem.Controllers
                 HttpContext.Response.Cookies.Add(authCookie);
                 return RedirectToAction("Index", "Home");
             }
-
             else
             {
-                ModelState.AddModelError("", "Invalid login attempt.");
+                ModelState.AddModelError("LoginError", "Invalid login attempt!!");               //Passing login error to the view
             }
             return View(model);
         }

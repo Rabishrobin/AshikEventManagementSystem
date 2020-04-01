@@ -42,8 +42,10 @@
   <ItemGroup>
     <Compile Include="AccountBL.cs" />
     <Compile Include="EventBL.cs" />
+    <Compile Include="Interface\IElementBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBL.cs" />
+    <Compile Include="ServiceCategoryBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OnlineEventManagement.DAL\OnlineEventManagementSystem.DAL.csproj">

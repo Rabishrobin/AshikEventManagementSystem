@@ -1,34 +1,41 @@
 ﻿using OnlineEventManagement.Repository.DAL;
+using OnlineEventManagement.DAL.Interface;
 using OnlineEventManagementSystem.Entity;
 using System.Collections.Generic;
+using OnlineEventManagementSystem.BL.Interface;
 
 namespace OnlineEventManagementSystem.BL
 {
-    public class EventBL
+    public class EventBL : IElementBL
     {
-        public static void AddEvent(Event newEvent)
+        IElementRepository eventRepository;
+        public EventBL()
         {
-            EventRepository.AddEvent(newEvent);             //Adding new event to the database
+            eventRepository = new EventRepository();
         }
-        public static Event GetEventById(string eventId)
+        public void AddElement(object newEvent)
         {
-            return EventRepository.GetEventById(eventId);    //Getting a particular event
+            eventRepository.AddElement(newEvent);             //Adding new event to the database
         }
-        public static IEnumerable<Event> DisplayEvents()
+        public object GetElementById(int eventId)
         {
-            return EventRepository.DisplayEvents();         //Getting the events as object in list from the database 
+            return eventRepository.GetElementById(eventId);    //Getting a particular event
         }
-        public static bool VerifyEvent(string eventId)
+        public IEnumerable<object> DisplayElements()
         {
-            return EventRepository.VerifyEvent(eventId);        //Verifying the existance of the event
+            return eventRepository.DisplayElements();         //Getting the events as object in list from the database 
         }
-        public static void DeleteEvent(string eventId)
+        public int? VerifyExistance(string eventName)
         {
-            EventRepository.DeleteEvent(eventId);           //Deleting an event from the database
+            return eventRepository.VerifyExistance(eventName);        //Verifying the existance of the event
         }
-        public static void UpdateEvent(Event updatedEvent)
+        public void DeleteElement(int eventId)
         {
-            EventRepository.UpdateEvent(updatedEvent);      //Updating the event details in the database
+            eventRepository.DeleteElement(eventId);           //Deleting an event from the database
+        }
+        public void UpdateElement(object updatedEvent)
+        {
+            eventRepository.UpdateElement(updatedEvent);      //Updating the event details in the database
         }
     }
 }

@@ -15,7 +15,20 @@ namespace OnlineEventManagement.Repository.DAL
                 context.SaveChanges();          //Saving the changes to the database
             }
         }
-        public static Account VerifyMailId(string userMailId,string password)
+        public static int? VerifyMailId(string mailId)
+        {
+            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
+            {
+                int? id = null;
+                if(context.Users.Where(u => u.UserMailId == mailId).FirstOrDefault() == null)
+                {
+                    IEnumerable<Account> users=context.Users.ToList();
+                    id =users.Count()==0 ? 0 : int.Parse(users.Last().UserID.ToString().Substring(4))+1;
+                }
+                return id;                   //Verifying user existance
+            }
+        }
+        public static Account ValidateLogin(string userMailId,string password)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {

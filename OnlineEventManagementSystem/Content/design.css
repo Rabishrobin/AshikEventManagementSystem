@@ -23,15 +23,21 @@
 }
 
 .container {
-    width: 100%;
+    width: 94%;
     padding-right: 15px;
     padding-left: 50px;
     margin-right: auto;
     /*margin-left: auto;*/
     display: flex;
 }
-.title-bar{
-    width:30%;
+
+.title-bar {
+    width: 20%;
+}
+.option-bar{
+
+    line-height:20px;
+    float:left;
 }
 .title-nav {
     text-decoration: none;
@@ -60,22 +66,22 @@ h2 {
 ul {
     list-style: none;
     background-color: white;
-    text-align:center;
+    text-align: center;
 }
 
     ul li {
         display: inline-block;
-        position:relative;
+        position: relative;
         line-height: 20px;
-        width:150px;
-        right:0;
+        width: 150px;
+        right: 0;
     }
 
         ul li a {
             text-decoration: none;
             color: black;
             display: block;
-            padding:8px 25px;
+            padding: 8px 25px;
         }
 
             ul li a:hover {
@@ -83,19 +89,54 @@ ul {
                 color: orange;
             }
 
-                ul li ul.drop-down {
-                    display: none;
-                    position: absolute;
-                }
+        ul li ul.drop-down {
+            display: none;
+            position: absolute;
+        }
 
-                ul li:hover ul.drop-down {
-                    display: block;
-                    text-align:center;
-                }
-                ul li ul.drop-down li{
-                    display:block;
-                }
-.error-text{
-    color:red;
-    font-size:12px;
+        ul li:hover ul.drop-down {
+            display: block;
+            text-align: center;
+        }
+
+        ul li ul.drop-down li {
+            display: block;
+        }
+
+.error-text {
+    color: red;
+    font-size: 12px;
+}
+
+
+.box{
+    border-radius:5px;
+    height:20px;
+    width:200px;
+    border-color:orange;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.3em 1.2em;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: 300;
+    color: white;
+    background-color: orange;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+    .button:hover {
+        color: black;
+    }
+
+@media all and (max-width:30em) {
+      .button {
+        display: block;
+        margin: 0.2em auto;
+    }
 }
