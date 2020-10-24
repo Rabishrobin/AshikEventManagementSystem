@@ -4,31 +4,35 @@
     ViewBag.Title = "UpdateCategory";
 }
 
-@if (TempData["Message"] != null)
-{
-    @Html.Label((string)TempData["Message"])
-    @Html.ActionLink("Display category", "DisplayCategory")
-}
 @using (Html.BeginForm("UpdateCategory", "ServiceCategory", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(Model => Model.CategoryId)
     <table cellpadding="10" align="center">
+        <caption>Update Category</caption>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.CategoryName)
-            </td>
-            <td>
-                @Html.EditorFor(Model => Model.CategoryName)
+                @Html.LabelFor(Model => Model.CategoryName)<br />
+                @Html.EditorFor(Model => Model.CategoryName, new { htmlAttributes = new { @maxlength = "20", @class = "box" } })
             </td>
         </tr>
-        <tr>
-            <td>
-                @Html.ActionLink("Cancel", "DisplayCategories", "ServiceCategory")
-            </td>
-            <td>
-                <input type="submit" value="Update" />
-            </td>
-        </tr>
+        @if (TempData["Message"] != null)
+        {
+            <tr>
+                <td>@Html.Label((string)TempData["Message"], new { @class = "completed-message" })</td>
+            </tr>
+            <tr>
+                <td colspan="2">@Html.ActionLink("Display categories", "DisplayCategories", "", new { @class = "button" })</td>
+            </tr>
+        }
+        else
+        {
+            <tr style="text-align:center">
+                <td>
+                    <input type="submit" value="Update" class="button"/>
+                </td>
+            </tr>
+        }
     </table>
 
 }

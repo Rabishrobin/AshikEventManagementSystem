@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/design.css" rel="stylesheet" type="text/css" />
+    <script src="~/Content/Script.js"></script>
 </head>
 <body>
     <div class="whole-continer">
@@ -32,19 +33,26 @@
                                 </ul>
                             </li>
                             <li>
-                                @Html.ActionLink("Services", "DisplaySerivces", "Service")
+                                @Html.ActionLink("Services", "DisplayServices", "Service")
                                 <ul class="drop-down">
-                                    <li>@Html.ActionLink("View Services", "DisplaySerivces", "Service")</li>
+                                    <li>@Html.ActionLink("View Services", "DisplayServices", "Service")</li>
                                     <li>@Html.ActionLink("Add Service", "AddService", "Service")</li>
                                 </ul>
                             </li>
                             <li>
                                 @Html.ActionLink(" Service categories", "DisplayCategories", "ServiceCategory")
                                 <ul class="drop-down">
-                                    <li>@Html.ActionLink("View categories", "DisplayCategories", "ServiceCategory")</li>
-                                    <li>@Html.ActionLink("Add categories", "AddCategory", "ServiceCategory")</li>
+                                    <li>@Html.ActionLink("View Categories", "DisplayCategories", "ServiceCategory")</li>
+                                    <li>@Html.ActionLink("Add Category", "AddCategory", "ServiceCategory")</li>
                                 </ul>
                             </li>
+                            @*<li>
+                                @Html.ActionLink("Packages", "DisplayPackage", "Package")
+                                <ul class="drop-down">
+                                    <li>@Html.ActionLink("View Packages", "DisplayPackage", "Package")</li>
+                                    <li>@Html.ActionLink("Add Package", "AddPackage", "Package")</li>
+                                </ul>
+                            </li>*@
                             <li>@Html.ActionLink("Customers", "DisplayCustomers", "Admin")</li>
                         }
                         @if (Request.IsAuthenticated)

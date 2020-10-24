@@ -5,6 +5,7 @@ namespace OnlineEventManagementSystem.Models
 {
     public class SignUpModel
     {
+        public int UserID { get; set; }
 
         //Validation for mail id
         [Required(ErrorMessage = "Please enter your email address")]
@@ -15,9 +16,9 @@ namespace OnlineEventManagementSystem.Models
 
         //validation for password
         [Required(ErrorMessage = "Please enter your password")]
-        [RegularExpression("((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()]).{6,15})", ErrorMessage = "Password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters.")]
+        [RegularExpression("((?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()]).{6,15})", ErrorMessage = "Password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters")]
         [MaxLength(15)]
-        [MinLength(6)]
+        [MinLength(8,ErrorMessage = "Password must be at least 8 characters long, contain at least one number and have a mixture of uppercase and lowercase letters")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string UserPassword { get; set; }

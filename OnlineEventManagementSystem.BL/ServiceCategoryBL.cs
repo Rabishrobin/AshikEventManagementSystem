@@ -1,40 +1,47 @@
 ﻿using OnlineEventManagement.DAL.Repository;
-using OnlineEventManagement.DAL.Interface;
 using OnlineEventManagementSystem.Entity;
+using OnlineEventManagement.DAL.Interface;
+using OnlineEventManagementSystem.BL.Interface;
 using System.Collections.Generic;
+using System;
 
 namespace OnlineEventManagementSystem.BL
 {
-    public class ServiceCategoryBL
+    public class ServiceCategoryBL : IServiceCategoryBL
     {
-        static IElementRepository categoryRepository;
-        static ServiceCategoryBL()
+        IServiceCategoryRepository categoryRepository;
+        public ServiceCategoryBL()
         {
             categoryRepository = new ServiceCategoryRepository();
         }
-        public static void AddCategory(ServiceCategory category)
+        public void AddCategory(ServiceCategory category)
         {
-            categoryRepository.AddElement(category);       //Adding new service
+            categoryRepository.AddCategory(category);       //Adding new service
         }
-        public static ServiceCategory GetCategoryById(int categoryId)
+        public ServiceCategory GetCategoryById(int categoryId)
         {
-            return (ServiceCategory)categoryRepository.GetElementById(categoryId);    //Getting a particular service from the database
+            return categoryRepository.GetCategoryById(categoryId);    //Getting a particular service from the database
         }
-        public static IEnumerable<ServiceCategory> DisplayCategory()
+        public IEnumerable<ServiceCategory> GetCategoryList()
         {
-            return (IEnumerable<ServiceCategory>)categoryRepository.DisplayElements();         //Getting the services from the database
+            return categoryRepository.GetCategoryList();         //Getting the services from the database
         }
-        public static int? VerifyCategory(string categoryName)
+        public bool VerifyCategory(string categoryName)
         {
-            return categoryRepository.VerifyExistance(categoryName);    //Verifying service existance
+            return categoryRepository.VerifyCategory(categoryName);    //Verifying service existance
         }
-        public static void DeleteCategory(int categoryId)
+        public void DeleteCategory(int categoryId)
         {
-            categoryRepository.DeleteElement(categoryId);         //Deleting service from the database
+            categoryRepository.DeleteCategory(categoryId);         //Deleting service from the database
         }
-        public static void UpdateCategory(ServiceCategory category)
+        public void UpdateCategory(ServiceCategory category)
         {
-            categoryRepository.UpdateElement(category);      //Updating the service details in the database
+            categoryRepository.UpdateCategory(category);      //Updating the service details in the database
+        }
+
+        public int GenerateCategoryID()
+        {
+            return categoryRepository.GenerateCategoryID();
         }
     }
 }

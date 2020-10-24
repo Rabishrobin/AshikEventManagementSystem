@@ -10,6 +10,7 @@ namespace OnlineEventManagementSystem.Models
     {
         //Validation for mail id
         [Required(ErrorMessage = "Please enter your email address")]
+        [DataType(DataType.EmailAddress,ErrorMessage ="Please enter a valid email address")]
         [Display(Name = "User Mail Id")]
         public string UserMailId { get; set; }
 

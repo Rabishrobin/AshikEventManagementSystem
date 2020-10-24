@@ -1,0 +1,54 @@
+﻿@model OnlineEventManagementSystem.Models.PackageModel
+
+@{
+    ViewBag.Title = "AddPackage";
+}
+
+@if (TempData["Message"] != null)
+{
+    @Html.Label((string)TempData["Message"])
+}
+
+@using (Html.BeginForm("AddPackage", "Package", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true);
+    <table align="center">
+        <caption>Add Package</caption>
+        <tr style="text-align:center">
+            <td>
+                @if (TempData["Message"] != null)
+                {
+                    @Html.Label((string)TempData["Message"], new { @class = "error-text" })
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.PackageName)<br />
+            @Html.TextBoxFor(Model => Model.PackageName, new { @maxlength = "20", @class = "box" })<br />
+            @Html.ValidationMessageFor(model => model.PackageName, "", new { @class = "error-text" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(Model => Model.EventID)<br />
+            @Html.DropDownListFor(Model => Model.EventID, new SelectList(ViewBag.Events, "EventID", "EventName"), new { @class = "box" })<br />
+            @Html.ValidationMessageFor(model => model.EventID)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(Model => Model.ServiceID)<br />
+            @Html.DropDownListFor(Model => Model.ServiceID, new SelectList(ViewBag.Services, "ServiceID", "ServiceName"), new { @class = "box" })<br />
+            @Html.ValidationMessageFor(model => model.ServiceID)
+        </td>
+    </tr>
+    <tr style="text-align:center">
+        <td colspan="2">
+            <input type="submit" value="Add" class="button" />
+        </td>
+    </tr>
+</table>
+}
+

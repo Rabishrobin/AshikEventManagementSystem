@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OnlineEventManagementSystem.Entity
@@ -23,11 +22,8 @@ namespace OnlineEventManagementSystem.Entity
         public string EventType { get; set; }
 
         public int CategoryID { get; set; }
+
         public ServiceCategory Category { get; set; }
 
-        public static int GenerateServiceID(int id)
-        {
-            return int.Parse((int)'S' + DateTime.Now.Year.ToString().Substring(2, 2) + id.ToString().PadLeft(3, '0'));
-        }
     }
 }

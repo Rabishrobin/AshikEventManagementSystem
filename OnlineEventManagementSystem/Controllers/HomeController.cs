@@ -1,11 +1,10 @@
-﻿using OnlineEventManagementSystem.BL;
-using OnlineEventManagementSystem.Entity;
-using System.Collections.Generic;
+﻿using OnlineEventManagementSystem.Models;
+using System;
 using System.Web.Mvc;
 
 namespace OnlineEventManagementSystem.Controllers
 {
-    [AllowAnonymous]
+    [CustomExceptionFilter]
     public class HomeController : Controller
     {
         public ViewResult Index()
@@ -20,8 +19,8 @@ namespace OnlineEventManagementSystem.Controllers
         }
         public ViewResult Service()
         {
-            IEnumerable<Service> services = ServiceBL.DisplayServices();             //Getting the services from the database as object
-            ViewBag.Services = services;                                            //Passing the list from the controller to view using viewbag
+            //IEnumerable<Service> services = ServiceBL.DisplayServices();             //Getting the services from the database as object
+            //ViewBag.Services = services;                                            //Passing the list from the controller to view using viewbag
             return View();
         }
         public ViewResult Gallery()

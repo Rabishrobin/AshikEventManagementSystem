@@ -1,0 +1,50 @@
+﻿@model OnlineEventManagementSystem.Models.PackageModel
+
+@{
+    ViewBag.Title = "UpdatePackage";
+}
+@using (Html.BeginForm("UpdatePackage", "Package", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(Model => Model.PackageId)
+    <table cellpadding="10" align="center">
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.PackageName)<br />
+                @Html.EditorFor(Model => Model.PackageName, new { htmlAttributes = new { @maxlength = "20", @class = "box" } })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.EventID)<br />
+                @Html.DropDownListFor(Model => Model.EventID, new SelectList(ViewBag.Events, "EventID", "EventName"), new { @class = "box" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(Model => Model.ServiceID)<br />
+                @Html.DropDownListFor(Model => Model.ServiceID, new SelectList(ViewBag.Services, "ServiceID", "ServiceName"), new { @class = "box" })
+            </td>
+        </tr>
+        @if (TempData["Message"] != null)
+        {
+            <tr>
+                <td>@Html.Label((string)TempData["Message"], new { @class = "completed-message" })</td>
+            </tr>
+            <tr style="text-align:center">
+                <td>@Html.ActionLink("Display Packages", "DisplayPackages", "", new { @class = "button" })</td>
+            </tr>
+        }
+        else
+        {
+            <tr style="text-align:center">
+                <td>
+                    <input type="submit" value="Update" class="button" />
+                </td>
+            </tr>
+        }
+    </table>
+
+}
+
+

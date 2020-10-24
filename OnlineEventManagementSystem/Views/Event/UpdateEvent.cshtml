@@ -3,42 +3,45 @@
 @{
     ViewBag.Title = "UpdateEvent";
 }
-@if (TempData["Message"] != null)
-{
-    @Html.Label((string)TempData["Message"])
-    @Html.ActionLink("Display events", "DisplayEvents")
-}
+
 @using (Html.BeginForm("UpdateEvent", "Event", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(Model => Model.EventId)
     <table cellpadding="10" align="center">
+        <caption>Update Event</caption>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.EventName)
-            </td>
-            <td>
-                @Html.EditorFor(Model => Model.EventName)
+                @Html.LabelFor(Model => Model.EventName)<br />
+                @Html.EditorFor(Model => Model.EventName, new { htmlAttributes = new {@maxlength="20", @class = "box" }})
             </td>
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.EventType)
-            </td>
-            <td>
+                @Html.LabelFor(Model => Model.EventType)<br />
                 @Html.RadioButtonFor(Model => Model.EventType, "Personal")Personal
                 @Html.RadioButtonFor(Model => Model.EventType, "Corporate")Corporate
             </td>
         </tr>
-        <tr>
-            <td>
-                @Html.ActionLink("Cancel", "DisplayEvents", "Event")
-            </td>
-            <td>
-                <input type="submit" value="Update" />
-            </td>
-        </tr>
+        @if (TempData["Message"] != null)
+        {
+            <tr>
+                <td>@Html.Label((string)TempData["Message"], new {@class="completed-message" })</td>
+            </tr>
+            <tr style="text-align:center">
+                <td>@Html.ActionLink("Display events", "DisplayEvents","",new {@class="button" })</td>
+            </tr>
+        }
+        else
+        {
+            <tr style="text-align:center">
+                <td>
+                    <input type="submit" value="Update" class="button"/>
+                </td>
+            </tr>
+        }
     </table>
-    
+
 }
 
 

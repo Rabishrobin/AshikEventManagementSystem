@@ -1,40 +1,47 @@
 ﻿using OnlineEventManagement.DAL.Repository;
 using OnlineEventManagement.DAL.Interface;
-using OnlineEventManagementSystem.Entity;
+using OnlineEventManagementSystem.BL.Interface;
 using System.Collections.Generic;
+using OnlineEventManagementSystem.Entity;
+using System;
 
 namespace OnlineEventManagementSystem.BL
 {
-    public class ServiceBL
+    public class ServiceBL : IServiceBL
     {
-        static IElementRepository serviceRepository;
-        static ServiceBL()
+        IServiceRepository serviceRepository;
+        public ServiceBL()
         {
             serviceRepository = new ServiceRepository();
         }
-        public static void AddService(Service newService)
+        public void AddService(Service service)
         {
-            serviceRepository.AddElement(newService);       //Adding new service
+            serviceRepository.AddService(service);       //Adding new service
         }
-        public static Service GetServiceById(int serviceId)
+        public Service GetServiceById(int serviceId)
         {
-            return (Service)serviceRepository.GetElementById(serviceId);    //Getting a particular service from the database
+            return serviceRepository.GetServiceById(serviceId);    //Getting a particular service from the database
         }
-        public static IEnumerable<Service> DisplayServices()
+        public IEnumerable<Service> GetServiceList()
         {
-            return (IEnumerable<Service>)serviceRepository.DisplayElements();         //Getting the services from the database
+            return serviceRepository.GetServiceList();         //Getting the services from the database
         }
-        public static int? VerifyService(string serviceName)
+        public bool VerifyService(string serviceName)
         {
-            return serviceRepository.VerifyExistance(serviceName);    //Verifying service existance
+            return serviceRepository.VerifyService(serviceName);    //Verifying service existance
         }
-        public static void DeleteService(int serviceId)
+        public void DeleteService(int serviceId)
         {
-            serviceRepository.DeleteElement(serviceId);         //Deleting service from the database
+            serviceRepository.DeleteService(serviceId);         //Deleting service from the database
         }
-        public static void UpdateService(Service service)
+        public void UpdateService(Service service)
         {
-            serviceRepository.UpdateElement(service);      //Updating the service details in the database
+            serviceRepository.UpdateService(service);      //Updating the service details in the database
+        }
+
+        public int GenerateServiceID()
+        {
+            return serviceRepository.GenerateServiceID();
         }
     }
 }

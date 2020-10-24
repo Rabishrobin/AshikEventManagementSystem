@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "DisplayPackage";
+}
+
+<table border="1" align="center" class="view-table">
+    <caption>Service Details</caption>
+    <tr>
+        <th>Service ID</th>
+        <th>Service Name</th>
+        <th>Service Category</th>
+        <th>Event Type</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    @foreach (OnlineEventManagementSystem.Entity.Package item in ViewBag.Packages)
+    {
+        <tr>
+            <td>@item.PackageID</td>
+            <td>@item.PackageName</td>
+            <td>@item.Event.EventName</td>
+            <td>@item.Service.ServiceName</td>
+            <td>
+                @Html.ActionLink("Update", "UpdatePackage", new { id = item.PackageID })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeletePackage", new { id = item.PackageID }, new { onclick = "return confirm('Are you sure to delete?');" })
+            </td>
+        </tr>
+    }
+</table>
+

@@ -12,7 +12,7 @@ namespace OnlineEventManagementSystem.Models
 
         //Validation for service category
         [Required(ErrorMessage = "Please enter the service category")]
-        [RegularExpression("[A-Z][a-z][^(@#&<>~;$^%{}?][^0-9]{0,35}", ErrorMessage = "Please enter the service category in correct format")]
+        [RegularExpression("[A-Z][a-z][^(@#&<>~;$^%{}?][^0-9]{0,35}", ErrorMessage = "Please enter a valid service category")]
         [Display(Name = "Service Category")]
         [MaxLength(20)]
         public string CategoryName { get; set; }

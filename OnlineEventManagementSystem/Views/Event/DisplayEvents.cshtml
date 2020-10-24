@@ -2,7 +2,8 @@
 @{
     ViewBag.Title = "DisplayEvents";
 }
-<table border="1" align="center">
+<table border="1" align="center" class="view-table">
+    <caption>Event Details</caption>
     <tr>
         <th>Event ID</th>
         <th>Event Name</th>
@@ -21,7 +22,7 @@
                 @Html.ActionLink("Update", "UpdateEvent", new { id = item.EventId})
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteEvent", new { id = item.EventId }, new { onclick="retrun confirm('Are you sure to delete?');"})
+                @Html.ActionLink("Delete", "DeleteEvent", new { id = item.EventId }, new { onclick="return confirm('Are you sure to delete?');"})
             </td>
         </tr>
     }

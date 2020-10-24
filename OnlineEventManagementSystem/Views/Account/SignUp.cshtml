@@ -8,8 +8,14 @@
 @using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
 {
     <h2 style="text-align:center">SignUp</h2>
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true);
     <table cellpadding="10" align="center">
+        <tr style="text-align:center">
+            <td colspan="2">
+                @Html.ValidationMessage("SignUpError", new { @class = "error-text" })
+            </td>
+        </tr>
         <tr>
             <td>
                 @Html.LabelFor(Model => Model.UserFirstName)<br />
@@ -27,7 +33,7 @@
         <tr>
             <td>
                 @Html.LabelFor(Model => Model.UserMobileNumber)<br />
-                @Html.TextBoxFor(Model => Model.UserMobileNumber, new { @maxlength = "10", @class = "box" })<br />
+                @Html.TextBoxFor(Model => Model.UserMobileNumber, new { @maxlength = "10", @class = "box", @onkeypress = "return restrictAlphabets(event)" })<br />
                 @Html.ValidationMessageFor(model => model.UserMobileNumber, "", new { @class = "error-text" })
             </td>
         </tr>
@@ -65,11 +71,6 @@
                 @Html.LabelFor(Model => Model.UserDOB)<br />
                 @Html.EditorFor(Model => Model.UserDOB)<br />
                 @Html.ValidationMessageFor(model => model.UserDOB, "", new { @class = "error-text" })
-            </td>
-        </tr>
-        <tr style="text-align:center">
-            <td colspan="2">
-                @Html.ValidationMessage("SignUpError", new { @class = "error-text" })
             </td>
         </tr>
         <tr style="text-align:center">

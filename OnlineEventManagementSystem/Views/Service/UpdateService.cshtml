@@ -4,48 +4,48 @@
     ViewBag.Title = "UpdateService";
 }
 
-@if (TempData["Message"] != null)
-{
-    @Html.Label((string)TempData["Message"])
-    @Html.ActionLink("Display services", "DisplayService")
-}
 @using (Html.BeginForm("UpdateService", "Service", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(Model => Model.ServiceId)
     <table cellpadding="10" align="center">
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.ServiceName)
-            </td>
-            <td>
-                @Html.EditorFor(Model => Model.ServiceName)
+                @Html.LabelFor(Model => Model.ServiceName)<br />
+                @Html.EditorFor(Model => Model.ServiceName, new { htmlAttributes = new { @maxlength = "20", @class = "box" } })
             </td>
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.ServiceCategory)
-            </td>
-            <td>
-                
+                @Html.LabelFor(Model => Model.CategoryID)<br />
+                @Html.DropDownListFor(Model=> Model.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"), new { @class = "box" })
             </td>
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.EventType)
-            </td>
-            <td>
+                @Html.LabelFor(Model => Model.EventType)<br />
                 @Html.RadioButtonFor(Model => Model.EventType, "Personal")Personal
                 @Html.RadioButtonFor(Model => Model.EventType, "Corporate")Corporate
+                @Html.RadioButtonFor(Model => Model.EventType, "Both")Both
             </td>
         </tr>
-        <tr>
-            <td>
-                @Html.ActionLink("Cancel", "DisplayEvents", "Event")
-            </td>
-            <td>
-                <input type="submit" value="Update" />
-            </td>
-        </tr>
+        @if (TempData["Message"] != null)
+        {
+            <tr>
+                <td>@Html.Label((string)TempData["Message"], new { @class = "completed-message" })</td>
+            </tr>
+            <tr style="text-align:center">
+                <td>@Html.ActionLink("Display Services", "DisplayService", "", new { @class = "button" })</td>
+            </tr>
+        }
+        else
+        {
+            <tr style="text-align:center">
+                <td>
+                    <input type="submit" value="Update" class="button" />
+                </td>
+            </tr>
+        }
     </table>
 
 }

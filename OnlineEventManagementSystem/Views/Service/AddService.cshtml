@@ -9,39 +9,43 @@
 }
 @using (Html.BeginForm("AddService", "Service", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true);
-    <table>
-        <tr>
-            <td>@Html.LabelFor(Model => Model.ServiceName)</td>
+    <table align="center">
+        <caption>Add Service</caption>
+        <tr style="text-align:center">
             <td>
-                @Html.TextBoxFor(Model => Model.ServiceName, new { @maxlength = "20" })
-                @Html.ValidationMessageFor(model => model.ServiceName)
+                @if (TempData["Message"] != null)
+                {
+                    @Html.Label((string)TempData["Message"], new { @class = "error-text" })
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(Model => Model.ServiceName)<br />
+                @Html.TextBoxFor(Model => Model.ServiceName, new { @maxlength = "20", @class = "box" })<br />
+                @Html.ValidationMessageFor(model => model.ServiceName,"", new { @class = "error-text" })
             </td>
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.CategoryID)
-            </td>
-            <td>
-                @Html.DropDownListFor(Model => Model.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"))
+                @Html.LabelFor(Model => Model.CategoryID)<br />
+                @Html.DropDownListFor(Model => Model.CategoryID, new SelectList(ViewBag.Categories, "CategoryID", "CategoryName"),new { @class = "box" })<br />
                 @Html.ValidationMessageFor(model => model.CategoryID)
             </td>
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.EventType)
-            </td>
-            <td>
+                @Html.LabelFor(Model => Model.EventType)<br />
                 @Html.RadioButtonFor(Model => Model.EventType, "Personal")Personal
                 @Html.RadioButtonFor(Model => Model.EventType, "Corporate")Corporate
-                @Html.RadioButtonFor(Model => Model.EventType, "Both")Both
-
+                @Html.RadioButtonFor(Model => Model.EventType, "Both")Both<br />
                 @Html.ValidationMessageFor(model => model.EventType)
             </td>
         </tr>
-        <tr colspan="2">
-            <td>
-                <input type="submit" value="Add" />
+        <tr style="text-align:center">
+            <td colspan="2">
+                <input type="submit" value="Add" class="button" />
             </td>
         </tr>
     </table>

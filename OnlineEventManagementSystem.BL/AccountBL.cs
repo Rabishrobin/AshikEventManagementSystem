@@ -1,26 +1,36 @@
 ﻿using OnlineEventManagement.Repository.DAL;
+using OnlineEventManagementSystem.BL.Interface;
 using OnlineEventManagementSystem.Entity;
 using System.Collections.Generic;
 
 namespace OnlineEventManagementSystem.BL
 {
-    public class AccountBL
+    public class AccountBL : IAccountBL
     {
-        public static void AddUser(Account user)
+        AccountRepository userRepository;
+        public AccountBL()
         {
-            AccountRepository.AddUser(user);        //Adding user details
+            userRepository = new AccountRepository();
         }
-        public static int? VerifyMailId(string mailId)
+        public void AddUser(Account user)
         {
-            return AccountRepository.VerifyMailId(mailId);                  //Verifying user existance
+            userRepository.AddUser(user);        //Adding user details
         }
-        public static Account ValidateLogin(string username,string password)
+        public bool VerifyUser(string mailId)
         {
-           return AccountRepository.ValidateLogin(username, password);           //Verifying the user mail id and password
+            return userRepository.VerifyUser(mailId);                  //Verifying user existance
         }
-        public static IEnumerable<Account> DisplayCustomers()
+        public Account ValidateLogin(string mailId,string password)
         {
-            return AccountRepository.DisplayCustomers();         //Getting the user details as object in list from the database 
+           return userRepository.ValidateLogin(mailId, password);           //Verifying the user mail id and password
+        }
+        public IEnumerable<Account> GetCustomerList()
+        {
+            return userRepository.GetCustomerList();         //Getting the user details as object in list from the database 
+        }
+        public int GenerateUserID()
+        {
+            return userRepository.GenerateUserID();
         }
     }
 }

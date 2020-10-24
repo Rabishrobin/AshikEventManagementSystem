@@ -4,24 +4,30 @@
     ViewBag.Title = "AddCategory";
 }
 
-@if (TempData["Message"] != null)
-{
-@Html.Label((string)TempData["Message"])
-}
 @using (Html.BeginForm("AddCategory", "ServiceCategory", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true);
-    <table>
+    <table align="center">
+        <caption>Add Category</caption>
+        @if (TempData["Message"] != null)
+        {
+            <tr style="text-align:center">
+                <td>
+                    @Html.Label((string)TempData["Message"], new { @class = "error-text" })
+                </td>
+            </tr>
+        }
         <tr>
-            <td>@Html.LabelFor(Model => Model.CategoryName)</td>
             <td>
-                @Html.TextBoxFor(Model => Model.CategoryName, new { @maxlength = "20" })
-                @Html.ValidationMessageFor(model => model.CategoryName)
+                @Html.LabelFor(Model => Model.CategoryName)<br />
+                @Html.TextBoxFor(Model => Model.CategoryName, new { @maxlength = "20", @class = "box" })<br />
+                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "error-text" })
             </td>
         </tr>
-        <tr colspan="2">
-            <td>
-                <input type="submit" value="Add" />
+        <tr style="text-align:center">
+            <td colspan="2">
+                <input type="submit" value="Add" class="button" />
             </td>
         </tr>
     </table>

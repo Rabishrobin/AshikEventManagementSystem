@@ -138,17 +138,18 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\design.css" />
+    <Content Include="Content\Script.js" />
     <Content Include="Content\Site.css" />
-    <Content Include="Controllers\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\bground.jpg" />
     <Content Include="Images\icon.png" />
     <Content Include="Images\logo.png" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Controllers\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Controllers\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Controllers\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -166,17 +167,21 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\PackageController.cs" />
     <Compile Include="Controllers\ServiceCategoryController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="MappingConfig.cs" />
+    <Compile Include="App_Start\MappingConfig.cs" />
+    <Compile Include="Models\CustomExceptionFilter.cs" />
+    <Compile Include="Models\PackageModel.cs" />
     <Compile Include="Models\ServiceCategoryModel.cs" />
     <Compile Include="Models\EventModel.cs" />
     <Compile Include="Models\ServiceModel.cs" />
@@ -199,13 +204,17 @@
     <Content Include="Views\Service\AddService.cshtml" />
     <Content Include="Views\Event\DisplayEvents.cshtml" />
     <Content Include="Views\Event\UpdateEvent.cshtml" />
-    <Content Include="Views\Service\DisplaySerivces.cshtml" />
+    <Content Include="Views\Service\DisplayServices.cshtml" />
     <Content Include="Views\Home\Event.cshtml" />
     <Content Include="Views\Service\UpdateService.cshtml" />
     <Content Include="Views\Admin\DisplayCustomers.cshtml" />
     <Content Include="Views\ServiceCategory\DisplayCategories.cshtml" />
     <Content Include="Views\ServiceCategory\UpdateCategory.cshtml" />
     <Content Include="Views\ServiceCategory\AddCategory.cshtml" />
+    <Content Include="Views\Error.cshtml" />
+    <Content Include="Views\Package\AddPackage.cshtml" />
+    <Content Include="Views\Package\DisplayPackage.cshtml" />
+    <Content Include="Views\Package\UpdatePackage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -217,6 +226,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OnlineEventManagement.DAL\OnlineEventManagementSystem.DAL.csproj">
+      <Project>{C9E77C49-51E1-48B9-BEB0-EE8F8797D3CA}</Project>
+      <Name>OnlineEventManagementSystem.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OnlineEventManagementSystem.BL\OnlineEventManagementSystem.BL.csproj">
       <Project>{ac67c7a0-6c58-44c6-ae2d-cec06d1b6aa9}</Project>
       <Name>OnlineEventManagementSystem.BL</Name>

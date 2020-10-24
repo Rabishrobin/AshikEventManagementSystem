@@ -3,7 +3,8 @@
     ViewBag.Title = "DisplayCategories";
 }
 
-<table border="1" align="center">
+<table border="1" align="center" class="view-table">
+    <caption>Category Details</caption>
     <tr>
         <th>Category ID</th>
         <th>Category Name</th>
@@ -19,7 +20,7 @@
                 @Html.ActionLink("Update", "UpdateCategory", new { id = item.CategoryID })
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteCategory", new { id = item.CategoryID })
+                @Html.ActionLink("Delete", "DeleteCategory", new { id = item.CategoryID }, new { onclick = "return confirm('Are you sure to delete?');" })
             </td>
         </tr>
     }

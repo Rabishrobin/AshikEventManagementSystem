@@ -4,36 +4,41 @@
     ViewBag.Title = "AddEvent";
 }
 
-@if (TempData["Message"]!=null)
-{
-    @Html.Label((string)TempData["Message"])
-}
+
 @using (Html.BeginForm("AddEvent", "Event", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true);
-    <table>
-        <tr>
-            <td>@Html.LabelFor(Model=>Model.EventName)</td>
+    <table align="center">
+        <caption>Add Event</caption>
+        <tr style="text-align:center">
             <td>
-                @Html.TextBoxFor(Model=>Model.EventName , new { @maxlength = "20" })
-                @Html.ValidationMessageFor(model=>model.EventName)
+                @if (TempData["Message"] != null)
+                {
+                    @Html.Label((string)TempData["Message"], new { @class = "error-text" })
+                }
             </td>
         </tr>
         <tr>
             <td>
-                @Html.LabelFor(Model => Model.EventType)
-            </td>
-            <td>
-                @Html.RadioButtonFor(Model => Model.EventType,"Personal")Personal
-                @Html.RadioButtonFor(Model => Model.EventType, "Corporate")Corporate
-                @Html.ValidationMessageFor(model=>model.EventType)
-            </td>
-        </tr>
-        <tr colspan="2">
-            <td>
-                <input type="submit" value="Add" />
-            </td>
-        </tr>
-    </table>
+            @Html.LabelFor(Model => Model.EventName)<br />
+            @Html.TextBoxFor(Model => Model.EventName, new { @maxlength = "20", @class = "box" })<br />
+            @Html.ValidationMessageFor(model => model.EventName, "", new { @class = "error-text" })
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.LabelFor(Model => Model.EventType)<br />
+            @Html.RadioButtonFor(Model => Model.EventType, "Personal")Personal
+            @Html.RadioButtonFor(Model => Model.EventType, "Corporate")Corporate<br />
+            @Html.ValidationMessageFor(model => model.EventType, "", new { @class = "error-text" })
+        </td>
+    </tr>
+    <tr style="text-align:center">
+        <td colspan="2">
+            <input type="submit" value="Add" class="button" />
+        </td>
+    </tr>
+</table>
 }
 

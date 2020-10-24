@@ -3,11 +3,13 @@
     ViewBag.Title = "DisplaySerivces";
 }
 
-<table border="1" align="center">
+<table border="1" align="center" class="view-table">
+    <caption>Service Details</caption>
     <tr>
         <th>Service ID</th>
         <th>Service Name</th>
-        <th>Service Type</th>
+        <th>Service Category</th>
+        <th>Event Type</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
@@ -16,12 +18,13 @@
         <tr>
             <td>@item.ServiceID</td>
             <td>@item.ServiceName</td>
-            @*<td>@item.ServiceCategory</td>*@
+            <td>@item.Category.CategoryName</td>
+            <td>@item.EventType</td>
             <td>
                 @Html.ActionLink("Update", "UpdateService", new { id = item.ServiceID })
             </td>
             <td>
-                @Html.ActionLink("Delete", "DeleteService", new { id = item.ServiceID })
+                @Html.ActionLink("Delete", "DeleteService", new { id = item.ServiceID }, new { onclick = "return confirm('Are you sure to delete?');" })
             </td>
         </tr>
     }

@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using OnlineEventManagementSystem.App_Start;
 
 namespace OnlineEventManagementSystem
 {
@@ -15,6 +14,7 @@ namespace OnlineEventManagementSystem
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             MappingConfig.MapAccountDetails();
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
         }
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
         {

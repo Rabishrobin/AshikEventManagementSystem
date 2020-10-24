@@ -3,11 +3,15 @@
 @{
     ViewBag.Title = "Login";
 }
-<h2 style="text-align:center">SignIn</h2>
+<h2 style="text-align:center">Login</h2>
 @using (Html.BeginForm("Login", "Account", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
     @Html.ValidationSummary(true);
     <table cellpadding="10" align="center">
+        <tr>
+            <td style="text-align:center">@Html.ValidationMessage("LoginError", new { @class = "error-text" })</td>
+        </tr>
         <tr>
             <td>
                 @Html.LabelFor(Model => Model.UserMailId)<br />
@@ -19,9 +23,6 @@
                 @Html.LabelFor(Model => Model.Password)<br />
                 @Html.PasswordFor(Model => Model.Password, new { @maxlength = "15", @class = "box"})
             </td>
-        </tr>
-        <tr>
-            <td>@Html.ValidationMessage("LoginError", new { @class = "error-text" })</td>
         </tr>
         <tr style="text-align:center">
             <td colspan="2">

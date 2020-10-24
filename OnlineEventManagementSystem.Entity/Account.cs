@@ -38,7 +38,7 @@ namespace OnlineEventManagementSystem.Entity
 
         [Required]
         [Display(Name = "Date of Birth")]
-        [Column("Date of Birth")]
+        [Column("Date of Birth", TypeName = "date")]
         public DateTime UserDOB { get; set; }
 
 
@@ -52,9 +52,10 @@ namespace OnlineEventManagementSystem.Entity
         [MaxLength(10)]
         public string Roles { get; set; }
 
-        public static int GenerateUserID(int id)
-        {
-            return int.Parse((int)'C'+ DateTime.Now.Year.ToString().Substring(2,2)+id.ToString().PadLeft(3,'0'));
-        }
     }
+    public enum Roles
+    {
+        User
+    }
+
 }

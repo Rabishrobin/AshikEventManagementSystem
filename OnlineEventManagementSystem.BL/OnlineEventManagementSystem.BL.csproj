@@ -42,7 +42,12 @@
   <ItemGroup>
     <Compile Include="AccountBL.cs" />
     <Compile Include="EventBL.cs" />
-    <Compile Include="Interface\IElementBL.cs" />
+    <Compile Include="Interface\IAccountBL.cs" />
+    <Compile Include="Interface\IEventBL.cs" />
+    <Compile Include="Interface\IPackageBL.cs" />
+    <Compile Include="Interface\IServiceBL.cs" />
+    <Compile Include="Interface\IServiceCategoryBL.cs" />
+    <Compile Include="PackageBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBL.cs" />
     <Compile Include="ServiceCategoryBL.cs" />

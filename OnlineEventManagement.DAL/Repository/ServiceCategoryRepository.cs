@@ -2,63 +2,78 @@
 using System.Collections.Generic;
 using System.Linq;
 using OnlineEventManagement.DAL.Interface;
+using System;
 
 namespace OnlineEventManagement.DAL.Repository
 {
-    public class ServiceCategoryRepository :IElementRepository
+    public class ServiceCategoryRepository :IServiceCategoryRepository
     {
-        public void AddElement(object category)
+        public void AddCategory(ServiceCategory category)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                context.Categories.Add((ServiceCategory)category);               //Adding new category to the database
+                context.Categories.Add(category);               //Adding new category to the database
                 context.SaveChanges();                          //Updating the database
             }
         }
-        public IEnumerable<object> DisplayElements()
+        public IEnumerable<ServiceCategory> GetCategoryList()
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
                 return context.Categories.ToList();               //Returning the list of the categories
             }
         }
-        public int? VerifyExistance(string categoryName)
+        public bool VerifyCategory(string categoryName)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                int? id = null;
-                if (context.Categories.Where(u => u.CategoryName == categoryName).FirstOrDefault() == null)                   //Verifying category existance
+                bool CanAddCategory = false;
+                //Verifying the existance of the event
+                if (context.Categories.Where(u => u.CategoryName == categoryName).FirstOrDefault() == null)
                 {
-                    IEnumerable<ServiceCategory> categories = context.Categories.ToList();
-                    id = categories.Count() == 0 ? 0 : int.Parse(categories.Last().CategoryID.ToString().Substring(4)) + 1;
+                    CanAddCategory = true;
                 }
-                return id;
+                return CanAddCategory;
             }
         }
-        public object GetElementById(int categoryId)
+        public ServiceCategory GetCategoryById(int categoryId)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
                 return context.Categories.Where(e => e.CategoryID == categoryId).FirstOrDefault();                  //Getting a category by passing the category id as a parameter
             }
         }
-        public void DeleteElement(int categoryId)
+        public void DeleteCategory(int categoryId)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                ServiceCategory category = (ServiceCategory)GetElementById(categoryId);                                                    //Getting the categroy object to be deleted
+                ServiceCategory category = GetCategoryById(categoryId);                                                    //Getting the categroy object to be deleted
                 context.Categories.Attach(category);                                                               //Attaching the object to the context
                 context.Categories.Remove(category);                                                               //Removing the object from the context
                 context.SaveChanges();                                                                          //Updating the database after deleting the category
             }
         }
-        public void UpdateElement(object category)
+        public void UpdateCategory(ServiceCategory category)
         {
             using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
             {
-                context.Entry((ServiceCategory)category).State = System.Data.Entity.EntityState.Modified;        //Updating the category details
+                context.Entry(category).State = System.Data.Entity.EntityState.Modified;        //Updating the category details
                 context.SaveChanges();                                                              //Saving the changes
             }
+        }
+
+        public int GenerateCategoryID()
+        {
+            int id = 0;
+            int categoryId;
+            using (OnlineEventManagementDBContext context = new OnlineEventManagementDBContext())
+            {
+                //Getting the latest event id
+                id = int.Parse(context.Categories.ToList().Last().CategoryID.ToString().Substring(4))+1;
+                //Generating event id
+                categoryId = int.Parse((int)'T' + DateTime.Now.Year.ToString().Substring(2, 2) + id.ToString().PadLeft(3, '0'));
+            }
+            return categoryId;
         }
     }
 }
